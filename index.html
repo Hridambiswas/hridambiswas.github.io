@@ -58,22 +58,28 @@
             position: relative;
             display: inline-block;
             margin-bottom: 40px;
+            overflow: hidden; 
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            z-index: 2;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             border: 3px solid rgba(99, 102, 241, 0.5);
             box-shadow: 0 0 60px rgba(99, 102, 241, 0.4),
                         0 0 100px rgba(168, 85, 247, 0.2);
             object-fit: cover;
+            object-position: center top;
             animation: float 6s ease-in-out infinite, fadeIn 1.5s ease;
             position: relative;
-            z-index: 2;
+            display: block;
         }
 
-        .profile-img-container::before {
+        .header-glow {
             content: '';
             position: absolute;
             top: 50%;
@@ -87,6 +93,7 @@
             filter: blur(30px);
             animation: pulse 4s ease-in-out infinite;
             z-index: 1;
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -148,21 +155,6 @@
             font-weight: 500;
             position: relative;
             overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .social-links a:hover::before {
-            left: 100%;
         }
 
         .social-links a:hover {
@@ -237,22 +229,6 @@
             overflow: hidden;
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
         .project-card:hover {
             transform: translateY(-15px) scale(1.02);
             box-shadow: 0 25px 60px rgba(99, 102, 241, 0.3),
@@ -265,16 +241,12 @@
             font-size: 1.6em;
             margin-bottom: 18px;
             font-weight: 600;
-            position: relative;
-            z-index: 1;
         }
 
         .project-card p {
             color: #94a3b8;
             margin-bottom: 18px;
             line-height: 1.7;
-            position: relative;
-            z-index: 1;
         }
 
         .project-tech {
@@ -282,8 +254,6 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
         }
 
         .tech-tag {
@@ -294,20 +264,12 @@
             font-size: 0.85em;
             border: 1px solid rgba(99, 102, 241, 0.3);
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background: rgba(99, 102, 241, 0.3);
-            border-color: rgba(99, 102, 241, 0.5);
         }
 
         .project-metric {
             font-weight: 600;
             color: #a855f7;
             margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
             font-size: 1.05em;
         }
 
@@ -316,9 +278,6 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
         }
 
         .project-link:hover {
@@ -333,24 +292,6 @@
             border-radius: 15px;
             border-left: 4px solid #6366f1;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #6366f1, #a855f7);
-            transition: width 0.3s ease;
-        }
-
-        .experience-item:hover::before {
-            width: 100%;
-            opacity: 0.1;
         }
 
         .experience-item:hover {
@@ -363,23 +304,17 @@
             font-size: 1.5em;
             margin-bottom: 8px;
             font-weight: 600;
-            position: relative;
-            z-index: 1;
         }
 
         .experience-meta {
             color: #64748b;
             font-size: 0.95em;
             margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
         }
 
         .experience-item ul {
             margin-left: 20px;
             color: #94a3b8;
-            position: relative;
-            z-index: 1;
         }
 
         .experience-item li {
@@ -392,37 +327,18 @@
             padding: 50px 20px;
             color: #64748b;
             margin-top: 60px;
-            font-size: 1em;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Scroll reveal animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -436,13 +352,8 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5em; }
-            .tagline { font-size: 1.2em; }
-            .career-focus { font-size: 1.1em; }
             .content { padding: 35px 25px; }
-            .projects-grid { grid-template-columns: 1fr; }
-            h2 { font-size: 2em; }
-            .profile-img { width: 160px; height: 160px; }
-            .profile-img-container::before { width: 180px; height: 180px; }
+            .profile-img-container { width: 160px; height: 160px; }
         }
     </style>
 </head>
@@ -450,7 +361,8 @@
     <div class="container">
         <header>
             <div class="profile-img-container">
-                <img src="profile.png" alt="Hridam Biswas- AI Researcher">
+                <div class="header-glow"></div>
+                <img src="profile.png" alt="Hridam Biswas" class="profile-img">
             </div>
             <h1>Hridam Biswas</h1>
             <p class="career-focus">AI Researcher | ML Engineer</p>
@@ -472,7 +384,7 @@
                     semantic segmentation and autonomous systems. My work spans clinical prediction systems, spatiotemporal analysis, and production ML 
                     pipelines—delivering measurable impact across healthcare, autonomous driving, and education. I've optimized biological prediction models 
                     at ISTA (18% accuracy improvement), engineered learning prediction systems at Dhamm.Ai, and analyzed 100M+ records at Microsoft to reduce 
-                    supply chain waste. I believe in AI systems that are not only powerful but also interpretable, safe, and beneficial to society.
+                    supply chain waste.
                 </p>
             </section>
 
@@ -480,95 +392,63 @@
                 <h2>Featured Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <h3>Sepsis Prediction using Ensemble Deep Learning</h3>
-                        <p>Built a clinical prediction pipeline combining XGBoost, multilayer perceptron, and logistic regression models with SHAP-based interpretability for transparent medical decision-making.</p>
+                        <h3>Jurify</h3>
+                        <p>An end-to-end deployed AI application that simplifies complex legal documents into plain language. Built to increase legal accessibility using optimized LLMs.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">Full-Stack Deployment</span>
+                        </div>
+                        <p class="project-metric">⚖️ End-to-End Deployed | Production Ready</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>MapMyWay</h3>
+                        <p>A smart trip planner and navigation tool deployed end-to-end. Provides optimized routing and location-specific itinerary generation for travelers.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Geolocation</span>
+                            <span class="tech-tag">Pathfinding</span>
+                            <span class="tech-tag">Full-Stack Deployment</span>
+                        </div>
+                        <p class="project-metric">📍 End-to-End Deployed | Trip Optimization</p>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Sepsis Prediction Deep Learning</h3>
+                        <p>Built a clinical prediction pipeline combining Ensemble models with SHAP-based interpretability for transparent medical decision-making.</p>
+                        <div class="project-tech">
                             <span class="tech-tag">PyTorch</span>
                             <span class="tech-tag">SHAP</span>
                             <span class="tech-tag">Clinical AI</span>
                         </div>
-                        <p class="project-metric">🎯 High-stakes healthcare application with interpretable predictions</p>
+                        <p class="project-metric">🎯 Interpretable Healthcare Predictions</p>
                     </div>
 
                     <div class="project-card">
                         <h3>PyramidNet Semantic Segmentation</h3>
-                        <p>Designed a multi-scale convolutional architecture for autonomous driving scenarios, demonstrating robust generalization on real-world driving data. Published in IEEE.</p>
+                        <p>Designed a multi-scale convolutional architecture for autonomous driving scenarios. Published in IEEE.</p>
                         <div class="project-tech">
                             <span class="tech-tag">PyTorch</span>
                             <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">Semantic Segmentation</span>
                         </div>
                         <p class="project-metric">📄 IEEE Published Research</p>
                         <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" class="project-link" target="_blank">View Publication →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>RLE XOR Trajectory Mining</h3>
-                        <p>Developed a spatiotemporal analysis system for autonomous vehicles to improve obstacle prioritization and path planning in complex driving scenarios.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">Trajectory Analysis</span>
-                            <span class="tech-tag">Autonomous Systems</span>
-                        </div>
-                        <p class="project-metric">📄 IEEE Published Research</p>
-                        <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" class="project-link" target="_blank">View Publication →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Biological Prediction System Optimization</h3>
-                        <p>Optimized biological prediction systems at ISTA through structured hyperparameter tuning and deep learning architecture design.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Hyperparameter Tuning</span>
-                            <span class="tech-tag">Computational Biology</span>
-                        </div>
-                        <p class="project-metric">📈 18% accuracy improvement | 22% latency reduction</p>
                     </div>
                 </div>
             </section>
 
             <section id="experience">
                 <h2>Experience</h2>
-                
                 <div class="experience-item">
                     <h3>Machine Learning Researcher</h3>
                     <p class="experience-meta">ISTA, Austria (Remote) | May 2025 - Jul 2025</p>
                     <ul>
-                        <li>Optimized biological prediction systems through structured hyperparameter tuning, increasing model accuracy by 18%</li>
-                        <li>Architected deep learning models for biological datasets, improving prediction stability across experimental settings</li>
+                        <li>Optimized biological prediction systems, increasing model accuracy by 18%</li>
                         <li>Reduced inference latency by 22% through optimization techniques</li>
                     </ul>
                 </div>
-
-                <div class="experience-item">
-                    <h3>Machine Learning Engineer Intern</h3>
-                    <p class="experience-meta">Dhamm.Ai, Noida, India (Remote) | Feb 2025 - Apr 2025</p>
-                    <ul>
-                        <li>Engineered student learning prediction models using behavioral data for data-driven academic forecasting</li>
-                        <li>Implemented scalable training pipelines and feature workflows, reducing model retraining time by 30%</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Data Analyst Intern</h3>
-                    <p class="experience-meta">Microsoft, Bengaluru, India (On-site) | May 2024 - Jul 2024</p>
-                    <ul>
-                        <li>Analyzed over 100 million records using SQL, Python, and Azure Data Explorer for supply chain optimization</li>
-                        <li>Applied statistical modeling and machine learning to reduce spare parts inventory waste by 10-15%</li>
-                        <li>Automated ETL workflows, improving data availability and reducing manual reporting effort</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Machine Learning Engineer Intern</h3>
-                    <p class="experience-meta">Ardent Pvt. Ltd., Kolkata, India (On-site) | Oct 2023 - Dec 2023</p>
-                    <ul>
-                        <li>Fine-tuned transformer-based NLP models for feedback analysis with improved classification accuracy</li>
-                        <li>Constructed deep learning models for enrollment and dropout forecasting, improving accuracy by 20%</li>
-                    </ul>
-                </div>
-            </section>
+                </section>
         </div>
 
         <footer>
@@ -577,7 +457,6 @@
     </div>
 
     <script>
-        // Smooth scroll reveal animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
