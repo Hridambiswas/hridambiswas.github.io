@@ -458,7 +458,7 @@
             <div class="social-links">
                 <a href="https://github.com/Hridambiswas" target="_blank">GitHub</a>
                 <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" target="_blank">Google Scholar</a>
-                <a href="https://linkedin.com/in/hridam-biswas" target="_blank">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/hridam-biswas-22b0392a5/" target="_blank">LinkedIn</a>
                 <a href="mailto:hridambiswas2005@gmail.com">Email</a>
             </div>
         </header>
@@ -479,6 +479,62 @@
             <section id="projects">
                 <h2>Featured Projects</h2>
                 <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Iron-Sentry — Autonomous NSE Pairs Trading Bot</h3>
+                        <p>Fully autonomous statistical arbitrage system running 24/7 on NSE equity pairs (SAIL/NMDC, NTPC/POWERGRID). OLS hedge ratio on log returns, z-score mean reversion with ghost-order guard, Telegram alerts, and paper trading mode for live validation before capital deployment.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">asyncio</span>
+                            <span class="tech-tag">yfinance</span>
+                            <span class="tech-tag">SQLite WAL</span>
+                            <span class="tech-tag">Telegram Bot API</span>
+                        </div>
+                        <p class="project-metric">📈 Live paper trading · targeting 15–20% monthly return</p>
+                        <a href="https://github.com/Hridambiswas/iron-sentry" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>ComorbidNet — Correlated Multi-Disease Detection</h3>
+                        <p>Detects T2D, Hypertension, Metabolic Syndrome, and CKD simultaneously using Classifier Chains that propagate predictions as features — capturing the metabolic cascade that independent models miss. SHAP interaction values explain per-disease attribution across 2,000 synthetic patients.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">Classifier Chains</span>
+                            <span class="tech-tag">SHAP</span>
+                            <span class="tech-tag">VIF Analysis</span>
+                            <span class="tech-tag">Clinical ML</span>
+                        </div>
+                        <p class="project-metric">🧬 +0.03 AUC gain · Hamming loss 0.09 → 0.07</p>
+                        <a href="https://github.com/Hridambiswas/comorbidnet" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>CreditSense — Real-Time Credit Risk API</h3>
+                        <p>Ensemble ML credit scorer combining Logistic Regression, Random Forest, and Gradient Boosting via soft-vote VotingClassifier. Served as a FastAPI backend trained on 23K+ real loan records. One-click deploy on Render.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">VotingClassifier</span>
+                            <span class="tech-tag">Render</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <p class="project-metric">💳 23K+ loan records · deployed on Render free tier</p>
+                        <a href="https://github.com/Hridambiswas/creditsense" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>V2V Perception Pipeline — HACK4IMPACT Track 2</h3>
+                        <p>Three-stage autonomous driving pipeline for vehicle-to-vehicle hazard sharing. DeepLabV3 semantic segmentation stores masks in SQLite, XOR delta maps changes to a 3×3 spatial grid, and a 48K-param CNN classifies threats with urgency scoring for occluded pedestrian detection.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PyTorch</span>
+                            <span class="tech-tag">DeepLabV3</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Computer Vision</span>
+                        </div>
+                        <p class="project-metric">🚗 HACK4IMPACT Track 2 · 91.3% detection confidence</p>
+                        <a href="https://github.com/Hridambiswas/v2v-perception" class="project-link" target="_blank">View on GitHub →</a>
+                    </div>
+
                     <div class="project-card">
                         <h3>Sepsis Prediction using Ensemble Deep Learning</h3>
                         <p>Built a clinical prediction pipeline combining XGBoost, multilayer perceptron, and logistic regression models with SHAP-based interpretability for transparent medical decision-making.</p>
