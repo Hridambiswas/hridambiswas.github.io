@@ -1,673 +1,1046 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hridam Biswas - AI Researcher & ML Engineer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hridam Biswas — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;user-select:none;}
+    body{font-family:Tahoma,Arial,sans-serif;overflow:hidden;width:100vw;height:100vh;background:#000;}
 
-        body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    /* ── LANDING ─────────────────────────────────── */
+    #landing{
+      position:fixed;inset:0;z-index:9000;
+      background:#0078d7;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .land-win{
+      width:430px;
+      border-radius:8px 8px 4px 4px;
+      box-shadow:4px 4px 20px rgba(0,0,0,.55),inset 1px 1px 0 rgba(255,255,255,.35);
+      animation:popIn .4s cubic-bezier(.175,.885,.32,1.275);
+    }
+    @keyframes popIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
 
-        /* Animated background gradient */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
-            animation: gradientShift 15s ease infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
+    /* ── XP TITLE BAR ────────────────────────────── */
+    .xp-bar{
+      background:linear-gradient(to bottom,#4da6f5 0%,#1b6ee0 5%,#1264db 10%,#1b74ee 15%,#1b74ee 65%,#1569e2 77%,#0f5cd4 84%,#0850c4 100%);
+      padding:4px 5px 4px 8px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-radius:7px 7px 0 0;
+    }
+    .xp-bar .ttl{
+      color:#fff;font-size:12px;font-weight:700;
+      text-shadow:1px 1px 2px rgba(0,0,0,.5);
+      display:flex;align-items:center;gap:5px;
+    }
+    .xp-bar .ttl img{width:16px;height:16px;}
+    .wbtns{display:flex;gap:3px;}
+    .wbtn{
+      width:21px;height:21px;border-radius:3px;
+      border:1px solid rgba(0,0,0,.35);
+      font-size:10px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;
+      background:linear-gradient(to bottom,#e8e5e0,#ccc9c0);
+      color:#222;
+    }
+    .wbtn.cls{background:linear-gradient(to bottom,#e87060,#c03020);color:#fff;}
+    .wbtn:hover{filter:brightness(1.15);}
+    .wbtn:active{filter:brightness(.9);}
 
-        @keyframes gradientShift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
+    /* ── LANDING BODY ────────────────────────────── */
+    .land-body{
+      background:#d4e8f4;
+      border:2px solid #6090c8;border-top:none;
+      border-radius:0 0 5px 5px;
+      padding:32px 40px 28px;
+      text-align:center;
+    }
+    .land-sub{
+      font-family:'Press Start 2P',monospace;
+      font-size:9px;color:#003c7a;letter-spacing:1px;margin-bottom:10px;
+    }
+    .land-h1{
+      font-family:Georgia,'Times New Roman',serif;
+      font-size:62px;font-weight:900;color:#002060;
+      letter-spacing:-3px;line-height:.9;margin-bottom:6px;
+    }
+    .land-badge{
+      display:inline-block;background:#0078d7;color:#fff;
+      font-family:Tahoma,Arial,sans-serif;font-size:13px;font-weight:700;
+      padding:3px 10px;border-radius:3px;margin-left:5px;vertical-align:middle;
+    }
+    .enter-btn{
+      margin-top:18px;background:none;border:none;
+      font-size:26px;color:#003c7a;cursor:pointer;
+      animation:blink 1.4s infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
+    /* ── DESKTOP ─────────────────────────────────── */
+    #desktop{
+      position:fixed;inset:0;display:none;
+    }
+    #desktop.on{display:block;}
+    .bliss{
+      width:100%;height:100%;position:relative;
+      background:
+        radial-gradient(ellipse 55% 38% at 58% 42%,rgba(255,255,255,.92) 0%,rgba(255,255,255,.35) 45%,transparent 68%),
+        linear-gradient(to bottom,
+          #1a78d8 0%,#3da4e8 22%,#64b8f0 42%,
+          #62bb62 52%,#3da03d 63%,#2d8c2d 74%,#237222 100%
+        );
+    }
 
-        header {
-            text-align: center;
-            padding: 80px 20px 60px;
-            animation: fadeInDown 1s ease;
-        }
+    /* XP logo top-right */
+    .xp-logo{
+      position:absolute;top:16px;right:18px;
+      text-align:right;pointer-events:none;
+    }
+    .xp-logo .ms{font-size:11px;color:rgba(255,255,255,.88);font-style:italic;}
+    .xp-logo .wn{font-size:30px;color:#fff;font-weight:300;letter-spacing:-1px;line-height:1;}
+    .xp-logo .wn b{font-weight:700;}
+    .xp-logo .xp{font-size:30px;color:#fff;font-weight:300;line-height:1;}
+    .flag{
+      display:inline-grid;grid-template-columns:1fr 1fr;gap:2px;
+      width:36px;height:36px;vertical-align:middle;margin-right:4px;
+      transform:perspective(80px) rotateY(-12deg) rotateX(8deg);
+    }
+    .flag div:nth-child(1){background:#f25022;border-radius:2px 0 0 0;}
+    .flag div:nth-child(2){background:#7fba00;border-radius:0 2px 0 0;}
+    .flag div:nth-child(3){background:#00a4ef;border-radius:0 0 0 2px;}
+    .flag div:nth-child(4){background:#ffb900;border-radius:0 0 2px 0;}
 
-        .profile-img-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 40px;
-        }
+    /* ── DESKTOP ICONS ───────────────────────────── */
+    .icons{
+      position:absolute;top:8px;left:8px;
+      display:flex;flex-direction:column;gap:4px;
+    }
+    .icon{
+      width:74px;padding:5px 4px;
+      display:flex;flex-direction:column;align-items:center;
+      border-radius:3px;cursor:pointer;
+    }
+    .icon:hover{background:rgba(49,106,197,.38);outline:1px dotted rgba(255,255,255,.7);}
+    .icon.sel{background:rgba(49,106,197,.62);outline:1px dotted #fff;}
+    .icon .ic{font-size:32px;margin-bottom:3px;line-height:1;}
+    .icon .lb{
+      font-size:11px;color:#fff;text-align:center;line-height:1.3;
+      text-shadow:1px 1px 3px #000,-1px -1px 3px #000,1px -1px 3px #000,-1px 1px 3px #000;
+    }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 3px solid rgba(99, 102, 241, 0.5);
-            box-shadow: 0 0 60px rgba(99, 102, 241, 0.4),
-                        0 0 100px rgba(168, 85, 247, 0.2);
-            object-fit: cover;
-            animation: float 6s ease-in-out infinite, fadeIn 1.5s ease;
-            position: relative;
-            z-index: 2;
-        }
+    /* ── TASKBAR ─────────────────────────────────── */
+    #taskbar{
+      position:fixed;bottom:0;left:0;right:0;height:32px;z-index:5000;
+      background:linear-gradient(to bottom,#245ecd 0%,#3a78d8 4%,#2060c8 7%,#1e5ec4 93%,#1050b0 100%);
+      border-top:1px solid #5888e0;
+      display:flex;align-items:center;
+    }
+    #start-btn{
+      height:100%;padding:0 14px 0 8px;
+      background:linear-gradient(to bottom,#66c466 0%,#52b252 40%,#3a983a 100%);
+      border:none;border-radius:0 12px 12px 0;
+      color:#fff;font-weight:700;font-size:13px;font-family:Tahoma,Arial,sans-serif;
+      display:flex;align-items:center;gap:5px;cursor:pointer;
+      box-shadow:2px 0 8px rgba(0,0,0,.35);text-shadow:0 1px 2px rgba(0,0,0,.4);
+    }
+    #start-btn:hover{filter:brightness(1.1);}
+    #tbar-items{
+      flex:1;display:flex;align-items:center;gap:2px;padding:2px 6px;overflow:hidden;
+    }
+    .tbar-item{
+      height:24px;padding:0 8px;
+      background:linear-gradient(to bottom,#1a55b0,#2068c8);
+      border:1px solid rgba(255,255,255,.2);border-radius:2px;
+      color:#fff;font-size:11px;font-family:Tahoma,Arial,sans-serif;
+      display:flex;align-items:center;gap:4px;cursor:pointer;
+      white-space:nowrap;max-width:160px;overflow:hidden;
+    }
+    .tbar-item.active{
+      background:linear-gradient(to bottom,#0a3880,#1050a0);
+      box-shadow:inset 1px 1px 3px rgba(0,0,0,.3);
+    }
+    #clock{
+      padding:0 10px;color:#fff;font-size:11px;text-align:center;
+      border-left:1px solid rgba(255,255,255,.2);min-width:68px;
+    }
 
-        .profile-img-container::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            opacity: 0.3;
-            filter: blur(30px);
-            animation: pulse 4s ease-in-out infinite;
-            z-index: 1;
-        }
+    /* ── START MENU ──────────────────────────────── */
+    #smenu{
+      position:fixed;bottom:32px;left:0;width:290px;
+      background:#fff;border:2px solid #0050d0;border-bottom:none;
+      display:none;z-index:6000;
+      box-shadow:4px -4px 16px rgba(0,0,0,.45);
+    }
+    #smenu.on{display:block;}
+    .sm-head{
+      background:linear-gradient(to right,#1264db,#3888e8);
+      padding:10px 14px;display:flex;align-items:center;gap:10px;
+    }
+    .sm-avatar{
+      width:42px;height:42px;border-radius:4px;overflow:hidden;
+      border:2px solid rgba(255,255,255,.4);
+    }
+    .sm-avatar img{width:100%;height:100%;object-fit:cover;}
+    .sm-name{color:#fff;font-weight:700;font-size:13px;text-shadow:0 1px 2px rgba(0,0,0,.4);}
+    .sm-body{padding:6px 0;}
+    .sm-item{
+      padding:7px 14px;display:flex;align-items:center;
+      gap:10px;font-size:12px;cursor:pointer;
+    }
+    .sm-item:hover{background:#1060d0;color:#fff;}
+    .sm-sep{height:1px;background:#d0cdc8;margin:4px 8px;}
+    .sm-foot{
+      background:linear-gradient(to bottom,#e8e4dc,#d8d4cc);
+      padding:6px 14px;display:flex;justify-content:flex-end;gap:8px;
+      border-top:1px solid #a8a8a8;
+    }
+    .sm-foot-btn{
+      padding:3px 10px;font-size:11px;border:1px solid #888;
+      border-radius:2px;cursor:pointer;
+      background:linear-gradient(to bottom,#f0ede4,#e0ddd4);
+      display:flex;align-items:center;gap:4px;
+    }
+    .sm-foot-btn:hover{background:linear-gradient(to bottom,#d8e4f8,#c8d8f0);}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
+    /* ── XP WINDOWS ──────────────────────────────── */
+    .win{
+      position:absolute;
+      min-width:380px;border-radius:8px 8px 4px 4px;
+      box-shadow:3px 3px 18px rgba(0,0,0,.5);
+      display:none;z-index:100;
+    }
+    .win.on{display:block;}
+    .win.min{display:none!important;}
+    .win .xp-bar{cursor:move;border-radius:7px 7px 0 0;}
+    .win-body{
+      background:#ece9d8;
+      border:2px solid #848484;border-top:none;
+      border-radius:0 0 4px 4px;
+      overflow:hidden;
+    }
+    .win.max{
+      top:0!important;left:0!important;
+      width:100vw!important;max-width:100vw!important;
+      border-radius:0!important;
+    }
+    .win.max .win-body{border-radius:0;}
 
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.5; }
-        }
+    /* Window address bar */
+    .waddr{
+      background:linear-gradient(to bottom,#f0ede0,#e4e1d4);
+      border-bottom:1px solid #b0ad9c;
+      padding:3px 8px;display:flex;align-items:center;gap:6px;font-size:11px;
+    }
+    .waddr-label{color:#555;font-weight:700;}
+    .waddr-val{
+      flex:1;background:#fff;border:1px inset #999;
+      padding:1px 5px;font-size:11px;font-family:Tahoma,Arial,sans-serif;
+      user-select:text;
+    }
+    .waddr-nav{
+      display:flex;gap:2px;
+    }
+    .waddr-nav button{
+      padding:2px 7px;font-size:11px;cursor:pointer;
+      background:linear-gradient(to bottom,#fff,#e8e5de);
+      border:1px solid #a0a090;border-radius:2px;
+    }
+    .waddr-nav button:hover{background:linear-gradient(to bottom,#fff,#d8e8ff);}
 
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-            letter-spacing: -2px;
-        }
+    /* Window content area */
+    .wcontent{
+      padding:14px 16px;
+      max-height:calc(80vh - 80px);
+      overflow-y:auto;
+    }
+    .wcontent::-webkit-scrollbar{width:16px;}
+    .wcontent::-webkit-scrollbar-track{background:#d4d1c4;}
+    .wcontent::-webkit-scrollbar-thumb{
+      background:linear-gradient(to right,#c0bdb0,#a8a598);
+      border:1px solid #888;
+    }
 
-        .career-focus {
-            font-size: 1.3em;
-            color: #94a3b8;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
+    /* ── CONTENT STYLES ──────────────────────────── */
+    .sec-title{
+      font-size:15px;font-weight:700;color:#003c7a;
+      border-bottom:2px solid #0078d7;padding-bottom:5px;margin-bottom:14px;
+    }
 
-        .tagline {
-            font-size: 1.5em;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 600;
-            margin-top: 10px;
-            line-height: 1.4;
-        }
+    /* About */
+    .about-hero{
+      display:flex;gap:16px;align-items:flex-start;margin-bottom:16px;
+    }
+    .about-photo{
+      width:80px;height:80px;border-radius:4px;
+      border:2px solid #8898c8;object-fit:cover;flex-shrink:0;
+    }
+    .about-info .name{font-size:16px;font-weight:700;color:#002060;}
+    .about-info .role{font-size:11px;color:#555;margin:2px 0 6px;}
+    .about-info .badges{display:flex;flex-wrap:wrap;gap:4px;}
+    .badge{
+      background:linear-gradient(to bottom,#dde8ff,#c8d8f8);
+      border:1px solid #8898c8;border-radius:2px;
+      padding:2px 7px;font-size:10px;color:#003c7a;
+    }
+    .about-text{font-size:12px;color:#333;line-height:1.75;user-select:text;}
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+    /* Experience */
+    .exp-card{
+      margin-bottom:12px;padding:10px 12px;
+      background:#fff;border:1px solid #c8c5b4;border-radius:2px;
+    }
+    .exp-card .co{font-weight:700;font-size:13px;color:#003c7a;}
+    .exp-card .ro{font-size:12px;color:#444;margin:1px 0;}
+    .exp-card .dt{font-size:10px;color:#888;margin-bottom:6px;}
+    .exp-card ul{margin-left:16px;}
+    .exp-card li{font-size:11px;color:#444;line-height:1.6;margin-bottom:3px;user-select:text;}
 
-        .social-links a {
-            color: #e0e0e0;
-            text-decoration: none;
-            padding: 12px 28px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
+    /* Projects */
+    .proj-card{
+      margin-bottom:12px;padding:10px 12px;
+      background:#fff;border:1px solid #c8c5b4;border-radius:2px;
+    }
+    .proj-card .pn{font-weight:700;font-size:13px;color:#003c7a;margin-bottom:4px;}
+    .proj-card .pd{font-size:11px;color:#444;line-height:1.6;margin-bottom:6px;user-select:text;}
+    .proj-card .pm{font-size:11px;color:#555;font-weight:700;margin-bottom:5px;}
+    .tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;}
+    .tag{
+      background:linear-gradient(to bottom,#dde8ff,#c8d8f8);
+      border:1px solid #8898c8;border-radius:10px;
+      padding:2px 8px;font-size:10px;color:#003c7a;
+    }
+    .proj-link{
+      font-size:11px;color:#0055cc;cursor:pointer;text-decoration:none;
+    }
+    .proj-link:hover{text-decoration:underline;}
 
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
+    /* Skills */
+    .skill-group{margin-bottom:14px;}
+    .skill-group .sg{font-size:11px;font-weight:700;color:#555;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+    .skill-pills{display:flex;flex-wrap:wrap;gap:5px;}
+    .skill-pill{
+      background:linear-gradient(to bottom,#fff,#ece9d8);
+      border:1px solid #a0a090;border-radius:2px;
+      padding:4px 9px;font-size:11px;color:#333;
+    }
 
-        .social-links a:hover::before {
-            left: 100%;
-        }
+    /* Education */
+    .edu-card{
+      margin-bottom:12px;padding:10px 12px;
+      background:#fff;border:1px solid #c8c5b4;border-radius:2px;
+      display:flex;gap:10px;align-items:flex-start;
+    }
+    .edu-icon{font-size:28px;}
+    .edu-inst{font-weight:700;font-size:13px;color:#003c7a;}
+    .edu-deg{font-size:11px;color:#444;margin:2px 0;}
+    .edu-yr{font-size:10px;color:#888;}
 
-        .social-links a:hover {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.6);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-        }
+    /* Achievements */
+    .ach-item{
+      display:flex;align-items:center;gap:10px;
+      padding:9px 12px;background:#fff;
+      border:1px solid #c8c5b4;border-radius:2px;
+      margin-bottom:7px;
+    }
+    .ach-icon{font-size:22px;flex-shrink:0;}
+    .ach-text .at{font-size:12px;font-weight:700;color:#003c7a;}
+    .ach-text .as{font-size:11px;color:#666;margin-top:1px;}
 
-        .content {
-            background: rgba(15, 15, 15, 0.8);
-            border-radius: 30px;
-            padding: 60px;
-            margin-top: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-            animation: fadeInUp 1s ease;
-        }
+    /* Contact */
+    .contact-card{
+      display:flex;align-items:center;gap:12px;
+      padding:10px 12px;background:#fff;
+      border:1px solid #c8c5b4;border-radius:2px;
+      margin-bottom:8px;cursor:pointer;
+    }
+    .contact-card:hover{background:#eef4ff;border-color:#8898c8;}
+    .contact-card .ci{font-size:24px;flex-shrink:0;}
+    .contact-card .cl{font-size:10px;color:#888;}
+    .contact-card .cv{font-size:12px;font-weight:700;color:#003c7a;}
+    .contact-card a{color:#003c7a;text-decoration:none;user-select:text;}
 
-        section {
-            margin-bottom: 70px;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 35px;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            padding-bottom: 15px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            border-radius: 2px;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-        }
-
-        .about-text {
-            font-size: 1.15em;
-            color: #cbd5e1;
-            line-height: 1.9;
-            text-align: justify;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .project-card {
-            background: rgba(30, 30, 30, 0.8);
-            padding: 35px;
-            border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.3),
-                        0 0 0 1px rgba(99, 102, 241, 0.4);
-            border-color: rgba(99, 102, 241, 0.5);
-        }
-
-        .project-card h3 {
-            color: #e0e0e0;
-            font-size: 1.6em;
-            margin-bottom: 18px;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card p {
-            color: #94a3b8;
-            margin-bottom: 18px;
-            line-height: 1.7;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .tech-tag {
-            background: rgba(99, 102, 241, 0.2);
-            color: #c7d2fe;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background: rgba(99, 102, 241, 0.3);
-            border-color: rgba(99, 102, 241, 0.5);
-        }
-
-        .project-metric {
-            font-weight: 600;
-            color: #a855f7;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
-            font-size: 1.05em;
-        }
-
-        .project-link {
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-        }
-
-        .project-link:hover {
-            color: #a855f7;
-            transform: translateX(5px);
-        }
-
-        .experience-item {
-            margin-bottom: 35px;
-            padding: 30px;
-            background: rgba(30, 30, 30, 0.6);
-            border-radius: 15px;
-            border-left: 4px solid #6366f1;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, #6366f1, #a855f7);
-            transition: width 0.3s ease;
-        }
-
-        .experience-item:hover::before {
-            width: 100%;
-            opacity: 0.1;
-        }
-
-        .experience-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-        }
-
-        .experience-item h3 {
-            color: #e0e0e0;
-            font-size: 1.5em;
-            margin-bottom: 8px;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-        }
-
-        .experience-meta {
-            color: #64748b;
-            font-size: 0.95em;
-            margin-bottom: 18px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .experience-item ul {
-            margin-left: 20px;
-            color: #94a3b8;
-            position: relative;
-            z-index: 1;
-        }
-
-        .experience-item li {
-            margin-bottom: 10px;
-            line-height: 1.7;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 20px;
-            color: #64748b;
-            margin-top: 60px;
-            font-size: 1em;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Scroll reveal animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            .tagline { font-size: 1.2em; }
-            .career-focus { font-size: 1.1em; }
-            .content { padding: 35px 25px; }
-            .projects-grid { grid-template-columns: 1fr; }
-            h2 { font-size: 2em; }
-            .profile-img { width: 160px; height: 160px; }
-            .profile-img-container::before { width: 180px; height: 180px; }
-        }
-    </style>
+    /* error / info dialogs */
+    .xp-dialog{
+      position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:380px;z-index:9999;display:none;
+    }
+    .xp-dialog.on{display:block;}
+    .dialog-body{
+      background:#ece9d8;border:2px solid #848484;border-top:none;
+      padding:20px;text-align:center;
+      border-radius:0 0 4px 4px;
+    }
+    .dialog-icon{font-size:36px;margin-bottom:10px;}
+    .dialog-msg{font-size:12px;color:#333;line-height:1.6;margin-bottom:16px;user-select:text;}
+    .dialog-btn{
+      padding:5px 20px;font-size:12px;cursor:pointer;
+      background:linear-gradient(to bottom,#fff,#ece9d8);
+      border:1px solid #888;border-radius:2px;
+    }
+    .dialog-btn:hover{background:linear-gradient(to bottom,#d8e8ff,#c8d8f0);}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="profile-img-container">
-                <img src="profile.png" alt="Hridam Biswas" class="profile-img">
-            </div>
-            <h1>Hridam Biswas</h1>
-            <p class="career-focus">AI Researcher | ML Engineer</p>
-            <p class="tagline">Building Intelligent Systems for Real-World Impact</p>
-            <div class="social-links">
-                <a href="https://github.com/Hridambiswas" target="_blank">GitHub</a>
-                <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" target="_blank">Google Scholar</a>
-                <a href="https://www.linkedin.com/in/hridam-biswas-22b0392a5/" target="_blank">LinkedIn</a>
-                <a href="mailto:hridambiswas2005@gmail.com">Email</a>
-            </div>
-        </header>
 
-        <div class="content">
-            <section id="about">
-                <h2>About Me</h2>
-                <p class="about-text">
-                    I'm an AI and Machine Learning Researcher with a passion for building deep learning models that solve real-world problems. 
-                    Currently pursuing B.Tech at KIIT, I've contributed to research at KIIT's Official Research Department and published IEEE papers on 
-                    semantic segmentation and autonomous systems. My work spans clinical prediction systems, spatiotemporal analysis, and production ML 
-                    pipelines—delivering measurable impact across healthcare, autonomous driving, and education. I've optimized biological prediction models 
-                    at ISTA (18% accuracy improvement), engineered learning prediction systems at Dhamm.Ai, and analyzed 100M+ records at Microsoft to reduce 
-                    supply chain waste. I believe in AI systems that are not only powerful but also interpretable, safe, and beneficial to society.
-                </p>
-            </section>
+<!-- ══════════════════════════════ LANDING ══════════════════════════════ -->
+<div id="landing">
+  <div class="land-win">
+    <div class="xp-bar">
+      <span class="ttl">📄 Portfolio.pdf</span>
+      <div class="wbtns">
+        <div class="wbtn">_</div>
+        <div class="wbtn">□</div>
+        <div class="wbtn cls">✕</div>
+      </div>
+    </div>
+    <div class="land-body">
+      <div class="land-sub">Hridam Biswas's</div>
+      <div class="land-h1">Port<span style="font-family:'Press Start 2P',monospace;font-size:48px">fo</span>lio<span class="land-badge">2026</span></div>
+      <button class="enter-btn" id="enterBtn">&#9658; &#9658; &#9658;</button>
+    </div>
+  </div>
+</div>
 
-            <section id="projects">
-                <h2>Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Iron-Sentry — Autonomous NSE Pairs Trading Bot</h3>
-                        <p>Fully autonomous statistical arbitrage system running 24/7 on NSE equity pairs (SAIL/NMDC, NTPC/POWERGRID). OLS hedge ratio on log returns, z-score mean reversion with ghost-order guard, Telegram alerts, and paper trading mode for live validation before capital deployment.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">asyncio</span>
-                            <span class="tech-tag">yfinance</span>
-                            <span class="tech-tag">SQLite WAL</span>
-                            <span class="tech-tag">Telegram Bot API</span>
-                        </div>
-                        <p class="project-metric">📈 Live paper trading · targeting 15–20% monthly return</p>
-                        <a href="https://github.com/Hridambiswas/iron-sentry" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
+<!-- ══════════════════════════════ DESKTOP ═════════════════════════════ -->
+<div id="desktop">
+  <div class="bliss">
 
-                    <div class="project-card">
-                        <h3>ComorbidNet — Correlated Multi-Disease Detection</h3>
-                        <p>Detects T2D, Hypertension, Metabolic Syndrome, and CKD simultaneously using Classifier Chains that propagate predictions as features — capturing the metabolic cascade that independent models miss. SHAP interaction values explain per-disease attribution across 2,000 synthetic patients.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">XGBoost</span>
-                            <span class="tech-tag">Classifier Chains</span>
-                            <span class="tech-tag">SHAP</span>
-                            <span class="tech-tag">VIF Analysis</span>
-                            <span class="tech-tag">Clinical ML</span>
-                        </div>
-                        <p class="project-metric">🧬 +0.03 AUC gain · Hamming loss 0.09 → 0.07</p>
-                        <a href="https://github.com/Hridambiswas/comorbidnet" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>CreditSense — Real-Time Credit Risk API</h3>
-                        <p>Ensemble ML credit scorer combining Logistic Regression, Random Forest, and Gradient Boosting via soft-vote VotingClassifier. Served as a FastAPI backend trained on 23K+ real loan records. One-click deploy on Render.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">scikit-learn</span>
-                            <span class="tech-tag">VotingClassifier</span>
-                            <span class="tech-tag">Render</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                        <p class="project-metric">💳 23K+ loan records · deployed on Render free tier</p>
-                        <a href="https://github.com/Hridambiswas/creditsense" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>V2V Perception Pipeline — HACK4IMPACT Track 2</h3>
-                        <p>Three-stage autonomous driving pipeline for vehicle-to-vehicle hazard sharing. DeepLabV3 semantic segmentation stores masks in SQLite, XOR delta maps changes to a 3×3 spatial grid, and a 48K-param CNN classifies threats with urgency scoring for occluded pedestrian detection.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">DeepLabV3</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">SQLite</span>
-                            <span class="tech-tag">Computer Vision</span>
-                        </div>
-                        <p class="project-metric">🚗 HACK4IMPACT Track 2 · 91.3% detection confidence</p>
-                        <a href="https://github.com/Hridambiswas/v2v-perception" class="project-link" target="_blank">View on GitHub →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Sepsis Prediction using Ensemble Deep Learning</h3>
-                        <p>Built a clinical prediction pipeline combining XGBoost, multilayer perceptron, and logistic regression models with SHAP-based interpretability for transparent medical decision-making.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">XGBoost</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">SHAP</span>
-                            <span class="tech-tag">Clinical AI</span>
-                        </div>
-                        <p class="project-metric">🎯 High-stakes healthcare application with interpretable predictions</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>PyramidNet Semantic Segmentation</h3>
-                        <p>Designed a multi-scale convolutional architecture for autonomous driving scenarios, demonstrating robust generalization on real-world driving data. Published in IEEE.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Computer Vision</span>
-                            <span class="tech-tag">Semantic Segmentation</span>
-                        </div>
-                        <p class="project-metric">📄 IEEE Published Research</p>
-                        <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" class="project-link" target="_blank">View Publication →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>RLE XOR Trajectory Mining</h3>
-                        <p>Developed a spatiotemporal analysis system for autonomous vehicles to improve obstacle prioritization and path planning in complex driving scenarios.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Deep Learning</span>
-                            <span class="tech-tag">Trajectory Analysis</span>
-                            <span class="tech-tag">Autonomous Systems</span>
-                        </div>
-                        <p class="project-metric">📄 IEEE Published Research</p>
-                        <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" class="project-link" target="_blank">View Publication →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Biological Prediction System Optimization</h3>
-                        <p>Optimized biological prediction systems at ISTA through structured hyperparameter tuning and deep learning architecture design.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Hyperparameter Tuning</span>
-                            <span class="tech-tag">Computational Biology</span>
-                        </div>
-                        <p class="project-metric">📈 18% accuracy improvement | 22% latency reduction</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Jurify</h3>
-                        <p>End-to-end deployed AI system that simplifies complex legal jargon into clear, actionable summaries. Utilizes optimized NLP models for high accuracy and fast inference.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Deployment</span>
-                        </div>
-                        <p class="project-metric">🚀 End-to-End Deployed | Legal AI Accessibility</p>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>MapMyWay</h3>
-                        <p>Deployed trip planning and navigation platform that creates optimized itineraries and provides real-time direction insights for any location globally.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Full-Stack</span>
-                            <span class="tech-tag">Geolocation API</span>
-                            <span class="tech-tag">Deployment</span>
-                        </div>
-                        <p class="project-metric">🗺️ End-to-End Deployed | Smart Trip Planner</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience">
-                <h2>Experience</h2>
-                
-                <div class="experience-item">
-                    <h3>Machine Learning Researcher</h3>
-                    <p class="experience-meta">ISTA, Austria (Remote) | May 2025 - Jul 2025</p>
-                    <ul>
-                        <li>Optimized biological prediction systems through structured hyperparameter tuning, increasing model accuracy by 18%</li>
-                        <li>Architected deep learning models for biological datasets, improving prediction stability across experimental settings</li>
-                        <li>Reduced inference latency by 22% through optimization techniques</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Machine Learning Engineer Intern</h3>
-                    <p class="experience-meta">Dhamm.Ai, Noida, India (Remote) | Feb 2025 - Apr 2025</p>
-                    <ul>
-                        <li>Engineered student learning prediction models using behavioral data for data-driven academic forecasting</li>
-                        <li>Implemented scalable training pipelines and feature workflows, reducing model retraining time by 30%</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Data Analyst Intern</h3>
-                    <p class="experience-meta">Microsoft, Bengaluru, India (On-site) | May 2024 - Jul 2024</p>
-                    <ul>
-                        <li>Analyzed over 100 million records using SQL, Python, and Azure Data Explorer for supply chain optimization</li>
-                        <li>Applied statistical modeling and machine learning to reduce spare parts inventory waste by 10-15%</li>
-                        <li>Automated ETL workflows, improving data availability and reducing manual reporting effort</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <h3>Machine Learning Engineer Intern</h3>
-                    <p class="experience-meta">Ardent Pvt. Ltd., Kolkata, India (On-site) | Oct 2023 - Dec 2023</p>
-                    <ul>
-                        <li>Fine-tuned transformer-based NLP models for feedback analysis with improved classification accuracy</li>
-                        <li>Constructed deep learning models for enrollment and dropout forecasting, improving accuracy by 20%</li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-
-        <footer>
-            <p>&copy; 2025 Hridam Biswas. Building AI systems for a better future.</p>
-        </footer>
+    <!-- XP Logo -->
+    <div class="xp-logo">
+      <div class="ms">Microsoft</div>
+      <div class="wn"><div class="flag"><div></div><div></div><div></div><div></div></div> <b>Windows</b></div>
+      <div class="xp">XP</div>
     </div>
 
-    <script>
-        // Smooth scroll reveal animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
+    <!-- Desktop Icons -->
+    <div class="icons">
+      <div class="icon" ondblclick="openWin('about')" onclick="selIcon(this)">
+        <div class="ic">🖥️</div><div class="lb">About Me</div>
+      </div>
+      <div class="icon" ondblclick="openWin('exp')" onclick="selIcon(this)">
+        <div class="ic">💼</div><div class="lb">Experience</div>
+      </div>
+      <div class="icon" ondblclick="openWin('proj')" onclick="selIcon(this)">
+        <div class="ic">📁</div><div class="lb">Projects</div>
+      </div>
+      <div class="icon" ondblclick="openWin('skills')" onclick="selIcon(this)">
+        <div class="ic">🛠️</div><div class="lb">Skills</div>
+      </div>
+      <div class="icon" ondblclick="openWin('edu')" onclick="selIcon(this)">
+        <div class="ic">🎓</div><div class="lb">Education</div>
+      </div>
+      <div class="icon" ondblclick="openWin('ach')" onclick="selIcon(this)">
+        <div class="ic">🏆</div><div class="lb">Achievements</div>
+      </div>
+      <div class="icon" ondblclick="openWin('contact')" onclick="selIcon(this)">
+        <div class="ic">📧</div><div class="lb">Contact</div>
+      </div>
+      <div class="icon" ondblclick="openExternal('https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ')" onclick="selIcon(this)">
+        <div class="ic">📄</div><div class="lb">Publications</div>
+      </div>
+    </div>
 
-        document.querySelectorAll('.project-card, .experience-item').forEach((el) => {
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
-    </script>
+  </div><!-- /bliss -->
+</div><!-- /desktop -->
+
+<!-- ══════════════════════════════ TASKBAR ═════════════════════════════ -->
+<div id="taskbar" style="display:none;">
+  <button id="start-btn" onclick="toggleMenu()">
+    <div class="flag" style="width:20px;height:20px;gap:1px;transform:none;">
+      <div></div><div></div><div></div><div></div>
+    </div>
+    start
+  </button>
+  <div id="tbar-items"></div>
+  <div id="clock"></div>
+</div>
+
+<!-- ══════════════════════════════ START MENU ══════════════════════════ -->
+<div id="smenu">
+  <div class="sm-head">
+    <div class="sm-avatar"><img src="profile.png" alt="Hridam" onerror="this.parentElement.innerHTML='👤'"></div>
+    <div class="sm-name">Hridam Biswas</div>
+  </div>
+  <div class="sm-body">
+    <div class="sm-item" onclick="openWin('about');toggleMenu()">🖥️ &nbsp;About Me</div>
+    <div class="sm-item" onclick="openWin('exp');toggleMenu()">💼 &nbsp;Experience</div>
+    <div class="sm-item" onclick="openWin('proj');toggleMenu()">📁 &nbsp;Projects</div>
+    <div class="sm-item" onclick="openWin('skills');toggleMenu()">🛠️ &nbsp;Skills</div>
+    <div class="sm-sep"></div>
+    <div class="sm-item" onclick="openWin('edu');toggleMenu()">🎓 &nbsp;Education</div>
+    <div class="sm-item" onclick="openWin('ach');toggleMenu()">🏆 &nbsp;Achievements</div>
+    <div class="sm-item" onclick="openWin('contact');toggleMenu()">📧 &nbsp;Contact</div>
+    <div class="sm-sep"></div>
+    <div class="sm-item" onclick="openExternal('https://github.com/Hridambiswas');toggleMenu()">🐙 &nbsp;GitHub</div>
+    <div class="sm-item" onclick="openExternal('https://www.linkedin.com/in/hridam-biswas-22b0392a5/');toggleMenu()">🔗 &nbsp;LinkedIn</div>
+  </div>
+  <div class="sm-foot">
+    <button class="sm-foot-btn">🔴 Shut Down</button>
+    <button class="sm-foot-btn" onclick="location.reload()">🔄 Restart</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ WINDOWS ══════════════════════════════ -->
+
+<!-- ABOUT ME -->
+<div class="win" id="win-about" style="top:60px;left:140px;width:500px;">
+  <div class="xp-bar">
+    <span class="ttl">🖥️ About Me — Hridam Biswas</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('about')">_</div>
+      <div class="wbtn" onclick="maxWin('about')">□</div>
+      <div class="wbtn cls" onclick="closeWin('about')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\About Me</span>
+    </div>
+    <div class="wcontent">
+      <div class="about-hero">
+        <img src="profile.png" class="about-photo" alt="Hridam" onerror="this.style.display='none'">
+        <div class="about-info">
+          <div class="name">Hridam Biswas</div>
+          <div class="role">AI/ML Researcher · B.Tech CSE @ KIIT '27 · Bidhannagar, WB</div>
+          <div class="badges">
+            <span class="badge">Ex-Microsoft '24</span>
+            <span class="badge">Ex-ISTA Austria '25</span>
+            <span class="badge">Incoming Dell '26</span>
+            <span class="badge">IEEE Author</span>
+            <span class="badge">GenAI Finalist</span>
+          </div>
+        </div>
+      </div>
+      <div class="sec-title">README.txt</div>
+      <p class="about-text">
+        Figuring out how to make machines a little smarter every day 🚀. From crunching 100M+ rows at Microsoft
+        to cooking up AI experiments at ISTA Austria, and now gearing up for Dell Summer '26 — I've been hopping
+        between research labs, hackathons, and internships like it's a side quest chain 🎮. Along the way, I somehow
+        ended up as an IEEE author and a GenAI Hackathon finalist, but at heart, I'm just a CSE undergrad ('27) who
+        loves building things that actually work. Always learning, always shipping, always hungry for the next challenge.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="win" id="win-exp" style="top:50px;left:160px;width:560px;">
+  <div class="xp-bar">
+    <span class="ttl">💼 Experience</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('exp')">_</div>
+      <div class="wbtn" onclick="maxWin('exp')">□</div>
+      <div class="wbtn cls" onclick="closeWin('exp')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\Experience</span>
+    </div>
+    <div class="wcontent">
+      <div class="exp-card">
+        <div class="co">🏛️ Institute of Science and Technology Austria (ISTA)</div>
+        <div class="ro">Machine Learning Researcher · Internship · Remote</div>
+        <div class="dt">May 2025 – Jun 2025 · 2 months</div>
+        <ul>
+          <li>Built and optimized biological prediction models through hyperparameter tuning — achieved ~10–12% performance gain</li>
+          <li>Contributed to new model architectures tailored for biological datasets, supporting better prediction outcomes</li>
+          <li>Reduced inference latency by 22% through architecture optimization</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="co">🤖 Dhamm.AI LLP</div>
+        <div class="ro">Machine Learning Engineer · Internship · Remote, Delhi</div>
+        <div class="dt">Feb 2025 – Apr 2025 · 3 months</div>
+        <ul>
+          <li>Built AI-driven solutions addressing Bloom's 2 Sigma problem for B2B clients</li>
+          <li>Implemented scalable training pipelines, reducing model retraining time by 30%</li>
+          <li>Collaborated with cross-functional teams to improve efficiency and accuracy</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="co">🪟 Microsoft</div>
+        <div class="ro">Data Analyst · Internship · Remote, Bengaluru</div>
+        <div class="dt">May 2024 – Jul 2024 · 3 months</div>
+        <ul>
+          <li>Analysed 100M+ rows of structured & unstructured data using SQL, Python, and Azure Data Explorer</li>
+          <li>Built Power BI dashboards tracking 5–10 KPIs for supply chain and operations</li>
+          <li>Implemented ETL pipelines automating 80% of manual reporting tasks</li>
+          <li>Statistical modelling identified 10–15% cost savings in spare parts inventory</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="co">⚙️ Ardent Computech Pvt. Ltd.</div>
+        <div class="ro">Machine Learning Engineer · Internship · On-site, Kolkata</div>
+        <div class="dt">Oct 2023 – Dec 2023 · 3 months</div>
+        <ul>
+          <li>Worked with 40M+ records; automated ETL pipelines reducing reporting time by 65%</li>
+          <li>Fine-tuned transformer-based NLP models for student feedback — 94% sentiment classification accuracy</li>
+          <li>Built predictive deep learning models (TF/PyTorch) for enrolment & dropout forecasting — 20% improvement</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="co">⚡ Elenxia</div>
+        <div class="ro">Student Intern · Remote, Bengaluru</div>
+        <div class="dt">Sep 2023 · 1 month</div>
+        <ul>
+          <li>First industry role — data cleaning, preprocessing, EDA on 2–5M record datasets</li>
+          <li>Experimented with transformer NLP models achieving 94% accuracy on sentiment classification prototype</li>
+          <li>Automation scripts reduced manual work by 20%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="win" id="win-proj" style="top:55px;left:170px;width:580px;">
+  <div class="xp-bar">
+    <span class="ttl">📁 Projects</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('proj')">_</div>
+      <div class="wbtn" onclick="maxWin('proj')">□</div>
+      <div class="wbtn cls" onclick="closeWin('proj')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\Projects</span>
+    </div>
+    <div class="wcontent">
+      <div class="proj-card">
+        <div class="pn">🤖 Iron-Sentry — Autonomous NSE Pairs Trading Bot</div>
+        <div class="pd">Fully autonomous 24/7 statistical arbitrage bot for NSE equity pairs (SAIL/NMDC, NTPC/POWERGRID). OLS hedge ratio on log returns, z-score mean reversion, ghost-order guard, Telegram alerts, SQLite WAL, paper trading mode with watchdog auto-restart.</div>
+        <div class="pm">📈 Live paper trading · targeting 15–20% monthly return</div>
+        <div class="tags"><span class="tag">Python</span><span class="tag">asyncio</span><span class="tag">yfinance</span><span class="tag">SQLite WAL</span><span class="tag">Telegram Bot API</span></div>
+        <a class="proj-link" href="https://github.com/Hridambiswas/iron-sentry" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="pn">🧬 ComorbidNet — Correlated Multi-Disease Detection</div>
+        <div class="pd">Detects T2D, Hypertension, Metabolic Syndrome, and CKD simultaneously using Classifier Chains that propagate predictions as features. SHAP interaction values explain per-disease attribution across 2,000 synthetic patients.</div>
+        <div class="pm">🎯 +0.03 AUC gain · Hamming loss 0.09 → 0.07</div>
+        <div class="tags"><span class="tag">XGBoost</span><span class="tag">Classifier Chains</span><span class="tag">SHAP</span><span class="tag">Clinical ML</span></div>
+        <a class="proj-link" href="https://github.com/Hridambiswas/comorbidnet" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="pn">💳 CreditSense — Real-Time Credit Risk API</div>
+        <div class="pd">Ensemble ML credit scorer combining Logistic Regression, Random Forest, and Gradient Boosting via soft-vote VotingClassifier. Served as FastAPI backend trained on 23K+ real loan records. One-click deploy on Render.</div>
+        <div class="pm">💡 23K+ loan records · Deployed on Render</div>
+        <div class="tags"><span class="tag">FastAPI</span><span class="tag">scikit-learn</span><span class="tag">VotingClassifier</span><span class="tag">Render</span></div>
+        <a class="proj-link" href="https://github.com/Hridambiswas/creditsense" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="pn">🚗 V2V Perception Pipeline — HACK4IMPACT Track 2</div>
+        <div class="pd">Three-stage autonomous driving pipeline for vehicle-to-vehicle hazard sharing. DeepLabV3 semantic segmentation → XOR delta spatial grid → 48K-param CNN threat classifier with urgency scoring for occluded pedestrian detection.</div>
+        <div class="pm">🏁 91.3% detection confidence · HACK4IMPACT submission</div>
+        <div class="tags"><span class="tag">PyTorch</span><span class="tag">DeepLabV3</span><span class="tag">OpenCV</span><span class="tag">Computer Vision</span></div>
+        <a class="proj-link" href="https://github.com/Hridambiswas/v2v-perception" target="_blank">View on GitHub →</a>
+      </div>
+      <div class="proj-card">
+        <div class="pn">📄 IEEE: Priority-Driven Image Compression</div>
+        <div class="pd">A framework combining semantic segmentation, priority-based decision model, and XOR-based contextual encoding for image compression in high-detail urban scenes. Evaluated using SSIM, PSNR, and execution time benchmarks.</div>
+        <div class="pm">📰 Submitted to IEEE via EDAS · Published</div>
+        <div class="tags"><span class="tag">Computer Vision</span><span class="tag">Semantic Segmentation</span><span class="tag">XOR Encoding</span><span class="tag">IEEE</span></div>
+        <a class="proj-link" href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ" target="_blank">View Publication →</a>
+      </div>
+      <div class="proj-card">
+        <div class="pn">⚖️ Jurify — AI Legal Simplifier</div>
+        <div class="pd">End-to-end deployed AI system that simplifies complex legal jargon into clear, actionable summaries using optimized NLP models for high accuracy and fast inference.</div>
+        <div class="tags"><span class="tag">NLP</span><span class="tag">PyTorch</span><span class="tag">Deployment</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="pn">🗺️ MapMyWay — Smart Trip Planner</div>
+        <div class="pd">Deployed trip planning and navigation platform that creates optimized itineraries and provides real-time direction insights for any location globally.</div>
+        <div class="tags"><span class="tag">Full-Stack</span><span class="tag">Geolocation API</span><span class="tag">Deployment</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="win" id="win-skills" style="top:65px;left:150px;width:480px;">
+  <div class="xp-bar">
+    <span class="ttl">🛠️ Skills</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('skills')">_</div>
+      <div class="wbtn" onclick="maxWin('skills')">□</div>
+      <div class="wbtn cls" onclick="closeWin('skills')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\Skills</span>
+    </div>
+    <div class="wcontent">
+      <div class="skill-group">
+        <div class="sg">Deep Learning &amp; ML</div>
+        <div class="skill-pills">
+          <span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span>
+          <span class="skill-pill">Scikit-Learn</span><span class="skill-pill">CNN</span>
+          <span class="skill-pill">RNN</span><span class="skill-pill">DNN</span>
+          <span class="skill-pill">BERT</span><span class="skill-pill">Transformers</span>
+          <span class="skill-pill">XGBoost</span><span class="skill-pill">Core ML</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg">Computer Vision &amp; NLP</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Computer Vision</span><span class="skill-pill">NLP</span>
+          <span class="skill-pill">Semantic Segmentation</span><span class="skill-pill">DeepLabV3</span>
+          <span class="skill-pill">SHAP</span><span class="skill-pill">Predictive Modelling</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg">Data &amp; Analytics</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span><span class="skill-pill">SQL</span>
+          <span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span>
+          <span class="skill-pill">Matplotlib</span><span class="skill-pill">Seaborn</span>
+          <span class="skill-pill">Power BI</span><span class="skill-pill">Data Manipulation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg">Cloud &amp; Infrastructure</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Microsoft Azure</span><span class="skill-pill">AWS Basics</span>
+          <span class="skill-pill">Google Cloud AutoML</span><span class="skill-pill">Azure Data Explorer</span>
+          <span class="skill-pill">FastAPI</span><span class="skill-pill">SQLite</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg">Languages</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Python</span><span class="skill-pill">Java</span>
+          <span class="skill-pill">C</span><span class="skill-pill">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg">Soft Skills</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Leadership</span><span class="skill-pill">Communication</span>
+          <span class="skill-pill">Root Cause Problem Solving</span><span class="skill-pill">Business Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="win" id="win-edu" style="top:80px;left:160px;width:440px;">
+  <div class="xp-bar">
+    <span class="ttl">🎓 Education</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('edu')">_</div>
+      <div class="wbtn" onclick="maxWin('edu')">□</div>
+      <div class="wbtn cls" onclick="closeWin('edu')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\Education</span>
+    </div>
+    <div class="wcontent">
+      <div class="edu-card">
+        <div class="edu-icon">🏫</div>
+        <div>
+          <div class="edu-inst">KIIT – Kalinga Institute of Industrial Technology</div>
+          <div class="edu-deg">Bachelor of Technology, Computer Science &amp; Engineering</div>
+          <div class="edu-yr">2023 – 2027 · Bhubaneswar, Odisha</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🏛️</div>
+        <div>
+          <div class="edu-inst">Institute of Science and Technology Austria (ISTA)</div>
+          <div class="edu-deg">Research Internship — Machine Learning</div>
+          <div class="edu-yr">May 2025 – Jun 2025 · Austria (Remote)</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🏢</div>
+        <div>
+          <div class="edu-inst">Aditya Academy</div>
+          <div class="edu-deg">Postgraduate Degree</div>
+          <div class="edu-yr">Completed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="win" id="win-ach" style="top:70px;left:150px;width:460px;">
+  <div class="xp-bar">
+    <span class="ttl">🏆 Achievements</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('ach')">_</div>
+      <div class="wbtn" onclick="maxWin('ach')">□</div>
+      <div class="wbtn cls" onclick="closeWin('ach')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\Achievements</span>
+    </div>
+    <div class="wcontent">
+      <div class="ach-item">
+        <div class="ach-icon">📰</div>
+        <div class="ach-text">
+          <div class="at">IEEE Research Author — 2025</div>
+          <div class="as">Published research on semantic segmentation &amp; image compression in IEEE</div>
+        </div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🤖</div>
+        <div class="ach-text">
+          <div class="at">GenAI Hackathon Semi-Finalist — 2025</div>
+          <div class="as">Selected among top teams in a national Generative AI hackathon</div>
+        </div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">💻</div>
+        <div class="ach-text">
+          <div class="at">Incoming Intern — Dell Technologies, Summer 2026</div>
+          <div class="as">Competitive selection from thousands of applicants across India</div>
+        </div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🪟</div>
+        <div class="ach-text">
+          <div class="at">Data Analyst Intern — Microsoft, 2024</div>
+          <div class="as">Worked on 100M+ record supply chain analytics at Microsoft Bengaluru</div>
+        </div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">☁️</div>
+        <div class="ach-text">
+          <div class="at">Google Cloud AI Labs Participant — 2025</div>
+          <div class="as">Hands-on with Gemini multimodal &amp; Vertex AI at Google Cloud Bhubaneswar event</div>
+        </div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🇮🇳</div>
+        <div class="ach-text">
+          <div class="at">India AI Impact Buildathon — 2026</div>
+          <div class="as">Participated in India AI Impact Summit, exploring AI for real-world challenges</div>
+        </div>
+      </div>
+      <div class="ach-item">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-text">
+          <div class="at">Python for Data Science &amp; ML Bootcamp — Udemy Certificate</div>
+          <div class="as">25-hour program by Jose Portilla (Pierian Training) — completed with distinction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="win" id="win-contact" style="top:75px;left:155px;width:420px;">
+  <div class="xp-bar">
+    <span class="ttl">📧 Contact</span>
+    <div class="wbtns">
+      <div class="wbtn" onclick="minWin('contact')">_</div>
+      <div class="wbtn" onclick="maxWin('contact')">□</div>
+      <div class="wbtn cls" onclick="closeWin('contact')">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="waddr">
+      <span class="waddr-label">Address</span>
+      <span class="waddr-val">C:\Hridam\Contact</span>
+    </div>
+    <div class="wcontent">
+      <div class="contact-card" onclick="openExternal('mailto:hridambiswas2005@gmail.com')">
+        <div class="ci">📧</div>
+        <div><div class="cl">Email</div><div class="cv">hridambiswas2005@gmail.com</div></div>
+      </div>
+      <div class="contact-card" onclick="openExternal('https://www.linkedin.com/in/hridam-biswas-22b0392a5/')">
+        <div class="ci">🔗</div>
+        <div><div class="cl">LinkedIn</div><div class="cv">linkedin.com/in/hridam-biswas-22b0392a5</div></div>
+      </div>
+      <div class="contact-card" onclick="openExternal('https://github.com/Hridambiswas')">
+        <div class="ci">🐙</div>
+        <div><div class="cl">GitHub</div><div class="cv">github.com/Hridambiswas</div></div>
+      </div>
+      <div class="contact-card" onclick="openExternal('https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ')">
+        <div class="ci">📚</div>
+        <div><div class="cl">Google Scholar</div><div class="cv">View Publications</div></div>
+      </div>
+      <div class="contact-card">
+        <div class="ci">📍</div>
+        <div><div class="cl">Location</div><div class="cv">Bidhannagar, West Bengal, India</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ENTER DESKTOP ────────────────────────────────────────────
+document.getElementById('enterBtn').onclick = () => {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('desktop').classList.add('on');
+  document.getElementById('taskbar').style.display = 'flex';
+  updateClock();
+  setInterval(updateClock, 1000);
+};
+
+// ── CLOCK ────────────────────────────────────────────────────
+function updateClock(){
+  const now = new Date();
+  const h = now.getHours(), m = now.getMinutes();
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const hh = h % 12 || 12;
+  const mm = String(m).padStart(2,'0');
+  document.getElementById('clock').innerHTML = `${hh}:${mm} ${ampm}`;
+}
+
+// ── ICON SELECTION ───────────────────────────────────────────
+function selIcon(el){
+  document.querySelectorAll('.icon').forEach(i => i.classList.remove('sel'));
+  el.classList.add('sel');
+}
+document.getElementById('desktop').addEventListener('click', e => {
+  if(!e.target.closest('.icon')) document.querySelectorAll('.icon').forEach(i => i.classList.remove('sel'));
+});
+
+// ── WINDOW MANAGEMENT ────────────────────────────────────────
+let zTop = 200;
+const wins = ['about','exp','proj','skills','edu','ach','contact'];
+const minState = {};
+
+function openWin(id){
+  const el = document.getElementById('win-'+id);
+  if(!el) return;
+  el.classList.remove('min');
+  el.classList.add('on');
+  bringFront(el);
+  addTaskbarItem(id);
+}
+
+function closeWin(id){
+  const el = document.getElementById('win-'+id);
+  if(!el) return;
+  el.classList.remove('on','max');
+  el.classList.remove('min');
+  removeTaskbarItem(id);
+}
+
+function minWin(id){
+  const el = document.getElementById('win-'+id);
+  if(!el) return;
+  el.classList.add('min');
+  updateTaskbarActive(id, false);
+}
+
+function maxWin(id){
+  const el = document.getElementById('win-'+id);
+  if(!el) return;
+  el.classList.toggle('max');
+}
+
+function bringFront(el){
+  zTop++;
+  el.style.zIndex = zTop;
+  wins.forEach(id => {
+    const t = document.getElementById('win-'+id);
+    if(t) t.querySelector('.tbar-item') && document.querySelector(`.tbar-item[data-id="${id}"]`)?.classList.remove('active');
+  });
+  const id = el.id.replace('win-','');
+  document.querySelector(`.tbar-item[data-id="${id}"]`)?.classList.add('active');
+}
+
+function openExternal(url){ window.open(url,'_blank'); }
+
+// ── TASKBAR ITEMS ────────────────────────────────────────────
+const winNames = {
+  about:'About Me', exp:'Experience', proj:'Projects',
+  skills:'Skills', edu:'Education', ach:'Achievements', contact:'Contact'
+};
+const winIcons = {
+  about:'🖥️', exp:'💼', proj:'📁',
+  skills:'🛠️', edu:'🎓', ach:'🏆', contact:'📧'
+};
+
+function addTaskbarItem(id){
+  if(document.querySelector(`.tbar-item[data-id="${id}"]`)) {
+    document.querySelectorAll('.tbar-item').forEach(t => t.classList.remove('active'));
+    document.querySelector(`.tbar-item[data-id="${id}"]`).classList.add('active');
+    return;
+  }
+  const el = document.getElementById('win-'+id);
+  const btn = document.createElement('div');
+  btn.className = 'tbar-item active';
+  btn.dataset.id = id;
+  btn.innerHTML = `${winIcons[id]||'📄'} ${winNames[id]||id}`;
+  btn.onclick = () => {
+    const w = document.getElementById('win-'+id);
+    if(w.classList.contains('min')){
+      w.classList.remove('min');
+      bringFront(w);
+    } else if(parseInt(w.style.zIndex) === zTop){
+      w.classList.add('min');
+    } else {
+      bringFront(w);
+    }
+  };
+  document.getElementById('tbar-items').appendChild(btn);
+  document.querySelectorAll('.tbar-item').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  bringFront(el);
+}
+
+function removeTaskbarItem(id){
+  document.querySelector(`.tbar-item[data-id="${id}"]`)?.remove();
+}
+
+function updateTaskbarActive(id, active){
+  const btn = document.querySelector(`.tbar-item[data-id="${id}"]`);
+  if(btn) active ? btn.classList.add('active') : btn.classList.remove('active');
+}
+
+// ── START MENU ───────────────────────────────────────────────
+function toggleMenu(){
+  document.getElementById('smenu').classList.toggle('on');
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('#smenu') && !e.target.closest('#start-btn'))
+    document.getElementById('smenu').classList.remove('on');
+});
+
+// ── DRAG ─────────────────────────────────────────────────────
+document.querySelectorAll('.win').forEach(win => {
+  const bar = win.querySelector('.xp-bar');
+  let drag=false, ox=0, oy=0, startL=0, startT=0;
+
+  bar.addEventListener('mousedown', e => {
+    if(e.target.classList.contains('wbtn')) return;
+    if(win.classList.contains('max')) return;
+    drag=true;
+    ox=e.clientX; oy=e.clientY;
+    startL=win.offsetLeft; startT=win.offsetTop;
+    bringFront(win);
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', e => {
+    if(!drag) return;
+    win.style.left = (startL + e.clientX - ox) + 'px';
+    win.style.top  = Math.max(0, startT + e.clientY - oy) + 'px';
+  });
+  document.addEventListener('mouseup', () => drag=false);
+
+  win.addEventListener('mousedown', () => bringFront(win));
+});
+</script>
 </body>
 </html>
