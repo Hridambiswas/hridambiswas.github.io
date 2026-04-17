@@ -541,24 +541,50 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   50% {transform:scaleY(0.45);}
 }
 
-/* ── FISH: 4 fish jumping from river ── */
-.fish-j{
-  position:absolute;
-  width:28px;height:16px;
+/* ── FISH SCHOOL: 4 fish swimming in formation through river ── */
+.fish-group{
+  position:absolute;bottom:12%;left:45%;
+  pointer-events:none;
+  animation:fishGroupDrift 35s ease-in-out infinite;
+}
+@keyframes fishGroupDrift{
+  0%  {transform:translate(0,0);}
+  30% {transform:translate(-80px,10px);}
+  65% {transform:translate(60px,-8px);}
+  100%{transform:translate(0,0);}
+}
+.fish-orb{
+  position:absolute;top:0;left:0;
+  width:42px;height:24px;
+  margin:-12px 0 0 -21px;
+  animation:fishSwim 10s linear infinite;
+}
+.fish-orb:nth-child(2){animation-delay:-2.5s;}
+.fish-orb:nth-child(3){animation-delay:-5s;}
+.fish-orb:nth-child(4){animation-delay:-7.5s;}
+@keyframes fishSwim{
+  0%    {transform:translate(180px,0) scaleX(-1);}
+  12%   {transform:translate(127px,16px) scaleX(-1);}
+  25%   {transform:translate(0,22px) scaleX(-1);}
+  37%   {transform:translate(-127px,16px) scaleX(-1);}
+  49.9% {transform:translate(-179px,0) scaleX(-1);}
+  50%   {transform:translate(-180px,0) scaleX(1);}
+  62%   {transform:translate(-127px,-16px) scaleX(1);}
+  75%   {transform:translate(0,-22px) scaleX(1);}
+  87%   {transform:translate(127px,-16px) scaleX(1);}
+  99.9% {transform:translate(179px,0) scaleX(1);}
+  100%  {transform:translate(180px,0) scaleX(-1);}
+}
+.fish-sprite{
+  width:42px;height:24px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='16'%3E%3Crect x='0' y='2' width='7' height='4' fill='%23e87820'/%3E%3Crect x='0' y='10' width='7' height='4' fill='%23e87820'/%3E%3Crect x='2' y='5' width='3' height='6' fill='%23c86010'/%3E%3Crect x='7' y='3' width='17' height='10' fill='%23f8a030'/%3E%3Crect x='9' y='4' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='14' y='4' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='11' y='7' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='16' y='7' width='4' height='3' fill='%23f8b840'/%3E%3Crect x='8' y='12' width='14' height='1' fill='%23ffe090'/%3E%3Crect x='11' y='1' width='8' height='3' fill='%23d06818'/%3E%3Crect x='13' y='0' width='4' height='2' fill='%23d06818'/%3E%3Crect x='10' y='9' width='4' height='4' fill='%23c86010'/%3E%3Crect x='20' y='5' width='4' height='4' fill='%23111111'/%3E%3Crect x='21' y='5' width='2' height='2' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='1' height='1' fill='%23aaddff'/%3E%3Crect x='24' y='8' width='3' height='2' fill='%23e87820'/%3E%3Crect x='25' y='9' width='2' height='2' fill='%23c86010'/%3E%3C/svg%3E") center/contain no-repeat;
   image-rendering:pixelated;
-  filter:drop-shadow(0 0 6px rgba(255,165,30,1));
-  animation:fishJump 8s ease-in-out infinite;
+  filter:drop-shadow(0 0 5px rgba(80,200,255,.95));
+  animation:fishWag .38s ease-in-out infinite;
 }
-@keyframes fishJump{
-  0%,62%,100%{transform:translateY(0) rotate(0deg);opacity:0;}
-  3%         {transform:translateY(-22px) rotate(-32deg);opacity:1;}
-  20%        {transform:translateY(-145px) rotate(-72deg);}
-  30%        {transform:translateY(-165px) rotate(-90deg);}
-  42%        {transform:translateY(-125px) rotate(-118deg);}
-  52%        {transform:translateY(-28px) rotate(-158deg);opacity:1;}
-  58%        {transform:translateY(0) rotate(-175deg);opacity:0.3;}
-  60%        {transform:translateY(0) rotate(-180deg);opacity:0;}
+@keyframes fishWag{
+  0%,100%{transform:scaleY(1);}
+  50%    {transform:scaleY(0.75);}
 }
 
 /* ── Taskbar copyright ── */
@@ -849,10 +875,12 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="bat-orb"><div class="bat-sprite"></div></div>
         <div class="bat-orb"><div class="bat-sprite"></div></div>
       </div>
-      <div class="fish-j" style="bottom:12%;left:16%;"></div>
-      <div class="fish-j" style="bottom:10%;left:44%;animation-delay:-3s;animation-duration:9.5s;"></div>
-      <div class="fish-j" style="bottom:13%;left:69%;animation-delay:-5.5s;animation-duration:7s;"></div>
-      <div class="fish-j" style="bottom:11%;left:58%;animation-delay:-1.5s;animation-duration:8.5s;"></div>
+      <div class="fish-group">
+        <div class="fish-orb"><div class="fish-sprite"></div></div>
+        <div class="fish-orb"><div class="fish-sprite"></div></div>
+        <div class="fish-orb"><div class="fish-sprite"></div></div>
+        <div class="fish-orb"><div class="fish-sprite"></div></div>
+      </div>
     </div>
 
     <!-- EXPERIENCE -->
