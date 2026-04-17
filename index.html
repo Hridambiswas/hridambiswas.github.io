@@ -104,15 +104,14 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   background:url('s4.png') center center / cover no-repeat;
   image-rendering:pixelated;
 }
-/* Cover Google Lens watermark bottom-left of s4.png */
-#hero::before{
-  content:'';position:absolute;bottom:0;left:0;
-  width:130px;height:130px;z-index:5;pointer-events:none;
-  background:radial-gradient(ellipse at 0% 100%,
-    #1a4a06 0%,#1a4a06 42%,
-    #1e5408 55%,#226010 68%,
-    transparent 82%
-  );
+/* Pixel tree covers Google Lens watermark */
+.hero-tree{
+  position:absolute;bottom:0;left:0;
+  width:90px;height:110px;
+  z-index:6;pointer-events:none;
+  image-rendering:pixelated;
+  object-fit:contain;
+  object-position:bottom left;
 }
 
 /* ── PIXEL CLOUDS (matching s4 pixel-art style) ── */
@@ -150,6 +149,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 .xp-logo{
   position:absolute;top:18px;right:20px;
   text-align:right;pointer-events:none;
+  z-index:15;
 }
 .xp-logo .ms{font-size:11px;color:rgba(255,255,255,.9);font-style:italic;}
 .xp-logo .wn{font-size:29px;color:#fff;font-weight:300;letter-spacing:-1px;line-height:1;display:flex;align-items:center;justify-content:flex-end;gap:6px;}
@@ -299,63 +299,40 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 #sections{
   padding:60px 0 100px;
   position:relative;
-  /* Pixel underground depth: grass → soil → clay → rock → cave → water */
+  /* s6 underground water cave as base layer */
   background:
-    repeating-linear-gradient(0deg,  rgba(0,0,0,.04) 0px,rgba(0,0,0,.04) 1px,transparent 1px,transparent 8px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,.04) 0px,rgba(0,0,0,.04) 1px,transparent 1px,transparent 8px),
-    repeating-linear-gradient(180deg,transparent 0px,transparent 23px,rgba(255,255,255,.045) 23px,rgba(255,255,255,.045) 25px),
-    linear-gradient(to bottom,
-      #2a5c10 0%,
-      #3a2c10 4%,  /* topsoil */
-      #4e3818 8%,
-      #5c4420 12%, /* subsoil */
-      #6a5028 16%,
-      #5c4424 19%, /* clay layer */
-      #786858 23%,
-      #6a6050 27%, /* pale rock begins */
-      #5e5448 31%,
-      #524c48 35%, /* grey rock */
-      #484040 39%,
-      #3e3838 43%,
-      #343030 47%, /* dark rock */
-      #282424 51%,
-      #1c1818 55%, /* cave */
-      #101010 59%,
-      #0c1020 63%, /* water transition */
-      #0a1630 67%,
-      #0c1e42 71%, /* underground water */
-      #0e2450 75%,
-      #102858 79%,
-      #0e2452 83%,
-      #0c1e4a 87%,
-      #0a1840 91%,
-      #081434 95%,
-      #060e2a 100%
-    );
+    repeating-linear-gradient(0deg,rgba(0,0,0,.022)0px,rgba(0,0,0,.022)1px,transparent 1px,transparent 8px),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.022)0px,rgba(0,0,0,.022)1px,transparent 1px,transparent 8px),
+    url('s6.png') center bottom / cover no-repeat;
 }
-/* Rock strata highlight bands */
+/* s5 pixel cave: fills top portion, smoothly dissolves into s6 */
 #sections::before{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    repeating-linear-gradient(180deg,
-      transparent 0px,transparent 71px,
-      rgba(180,140,100,.1) 71px,rgba(180,140,100,.1) 73px,
-      transparent 73px,transparent 144px
-    );
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:72%;
+  background:url('s5.png') center top / cover no-repeat;
+  -webkit-mask-image:linear-gradient(to bottom,
+    black 0%,black 45%,
+    rgba(0,0,0,.6) 60%,
+    rgba(0,0,0,.2) 78%,
+    transparent 100%
+  );
+  mask-image:linear-gradient(to bottom,
+    black 0%,black 45%,
+    rgba(0,0,0,.6) 60%,
+    rgba(0,0,0,.2) 78%,
+    transparent 100%
+  );
+  z-index:0;pointer-events:none;
 }
-/* Underground water shimmer at bottom */
+/* Subtle horizontal strata lines over both images */
 #sections::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:36%;
+  content:'';position:absolute;inset:0;
   pointer-events:none;z-index:0;
   background:repeating-linear-gradient(180deg,
-    rgba(30,90,220,.07) 0px,rgba(30,90,220,.07) 3px,
-    rgba(10,40,140,.09) 3px,rgba(10,40,140,.09) 6px
+    transparent 0px,transparent 31px,
+    rgba(255,255,255,.03) 31px,rgba(255,255,255,.03) 33px
   );
-  animation:waterShimmer 5s ease-in-out infinite;
-}
-@keyframes waterShimmer{
-  0%,100%{opacity:.5;transform:translateY(0);}
-  50%     {opacity:1; transform:translateY(-3px);}
 }
 
 .s-win{
@@ -795,6 +772,9 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
       </div>
     </div>
 
+
+    <!-- Pixel tree covers Google Lens watermark -->
+    <img src="s7.png" class="hero-tree" alt="">
 
   </div><!-- /hero -->
 
