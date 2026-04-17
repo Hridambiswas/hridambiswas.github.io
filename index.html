@@ -488,13 +488,66 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 }
 .ph-close:hover{color:#c00;}
 
-/* ══════════════════ FOOTER ══════════════════ */
-#footer{
-  text-align:center;padding:30px;
-  font-family:'Press Start 2P',monospace;font-size:8px;
-  color:rgba(255,255,255,.5);letter-spacing:1px;
-  background:rgba(0,0,0,.3);
-  border-top:1px solid rgba(255,255,255,.1);
+/* ══════════════════ FOOTER (ghost — kept for IntersectionObserver) ══════════════════ */
+#footer{height:2px;opacity:0;overflow:hidden;padding:0;margin:0;}
+
+/* ══════════════════ CAVE & RIVER LIFE ══════════════════ */
+.cave-life{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+
+/* ── Bats ── */
+.bat-wrap{position:absolute;width:20px;height:10px;}
+.bat-body{
+  width:20px;height:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10'%3E%3Crect x='7' y='0' width='2' height='2' fill='%234a2060'/%3E%3Crect x='11' y='0' width='2' height='2' fill='%234a2060'/%3E%3Crect x='7' y='2' width='6' height='7' fill='%234a2060'/%3E%3Crect x='0' y='3' width='7' height='3' fill='%234a2060'/%3E%3Crect x='13' y='3' width='7' height='3' fill='%234a2060'/%3E%3Crect x='1' y='5' width='6' height='2' fill='%234a2060'/%3E%3Crect x='13' y='5' width='6' height='2' fill='%234a2060'/%3E%3Crect x='8' y='4' width='2' height='2' fill='%23dd1020'/%3E%3Crect x='11' y='4' width='2' height='2' fill='%23dd1020'/%3E%3C/svg%3E") center/contain no-repeat;
+  image-rendering:pixelated;
+  animation:batFlap .22s steps(1) infinite;
+}
+@keyframes batFlap{
+  0%  {transform:scaleY(1);}
+  50% {transform:scaleY(0.58);}
+}
+.bat-wrap.b1{top:8%;left:25%;animation:batOrbit 5.5s linear infinite;}
+.bat-wrap.b2{top:13%;left:58%;animation:batOrbit 7.2s linear infinite;animation-delay:-2.8s;}
+.bat-wrap.b3{top:5%;left:74%;animation:batOrbit 4.2s linear infinite;animation-delay:-1.5s;}
+@keyframes batOrbit{
+  0%  {transform:translate(0,0) scaleX(1);}
+  12% {transform:translate(55px,-16px) scaleX(1);}
+  25% {transform:translate(90px,0) scaleX(1);}
+  37% {transform:translate(55px,16px) scaleX(-1);}
+  50% {transform:translate(0,0) scaleX(-1);}
+  62% {transform:translate(-55px,-16px) scaleX(-1);}
+  75% {transform:translate(-90px,0) scaleX(-1);}
+  87% {transform:translate(-55px,16px) scaleX(1);}
+  100%{transform:translate(0,0) scaleX(1);}
+}
+
+/* ── Fish ── */
+.fish-wrap{position:absolute;width:16px;height:10px;}
+.fish-body{
+  width:16px;height:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Crect x='4' y='2' width='10' height='6' fill='%23f89820'/%3E%3Crect x='0' y='1' width='5' height='3' fill='%23f89820'/%3E%3Crect x='0' y='6' width='5' height='3' fill='%23f89820'/%3E%3Crect x='5' y='6' width='8' height='2' fill='%23ffd060'/%3E%3Crect x='6' y='1' width='4' height='1' fill='%23e07800'/%3E%3Crect x='12' y='3' width='2' height='2' fill='%23111111'/%3E%3Crect x='13' y='3' width='1' height='1' fill='%23ffffff'/%3E%3C/svg%3E") center/contain no-repeat;
+  image-rendering:pixelated;
+}
+.fish-wrap.f1{bottom:14%;left:20%;animation:fishJump 4.5s ease-in-out infinite;}
+.fish-wrap.f2{bottom:11%;left:49%;animation:fishJump 6s ease-in-out infinite;animation-delay:-2.2s;}
+.fish-wrap.f3{bottom:16%;left:73%;animation:fishJump 3.8s ease-in-out infinite;animation-delay:-1.1s;}
+@keyframes fishJump{
+  0%,100%{transform:translateY(0) rotate(0deg);opacity:0;}
+  5%     {transform:translateY(-8px) rotate(-28deg);opacity:1;}
+  28%    {transform:translateY(-85px) rotate(-65deg);}
+  48%    {transform:translateY(-100px) rotate(-95deg);}
+  68%    {transform:translateY(-60px) rotate(-138deg);}
+  82%    {transform:translateY(-10px) rotate(-162deg);opacity:1;}
+  90%    {transform:translateY(0) rotate(-175deg);opacity:0.2;}
+  93%    {transform:translateY(0) rotate(-180deg);opacity:0;}
+}
+
+/* ── Taskbar copyright ── */
+#tbar-copy{
+  position:absolute;left:50%;transform:translateX(-50%);
+  font-family:'Press Start 2P',monospace;font-size:6px;
+  color:rgba(255,255,255,.55);letter-spacing:1px;
+  white-space:nowrap;pointer-events:none;user-select:none;
 }
 
 /* ══════════════════ SECTION DIVIDERS ══════════════════ */
@@ -769,6 +822,16 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   <!-- ══════════════════════════ SCROLL SECTIONS ══════════════════════════ -->
   <div id="sections">
 
+    <!-- Cave bats & river fish -->
+    <div class="cave-life" aria-hidden="true">
+      <div class="bat-wrap b1"><div class="bat-body"></div></div>
+      <div class="bat-wrap b2"><div class="bat-body"></div></div>
+      <div class="bat-wrap b3"><div class="bat-body"></div></div>
+      <div class="fish-wrap f1"><div class="fish-body"></div></div>
+      <div class="fish-wrap f2"><div class="fish-body"></div></div>
+      <div class="fish-wrap f3"><div class="fish-body"></div></div>
+    </div>
+
     <!-- EXPERIENCE -->
     <div class="sec-wrap" id="sec-about" style="padding-top:60px;">
       <div class="s-win" id="win-about" data-id="about">
@@ -963,6 +1026,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
     start
   </button>
   <div id="tbar-items"></div>
+  <div id="tbar-copy">© 2026 Hridam Biswas &nbsp;·&nbsp; Built with ♥ on Windows XP</div>
   <div id="clock"></div>
 </div>
 
