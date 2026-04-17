@@ -48,17 +48,24 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   background:#d4e8f4;border:2px solid #6090c8;border-top:none;
   border-radius:0 0 5px 5px;padding:34px 42px 30px;text-align:center;
 }
-.land-sub{font-family:'Press Start 2P',monospace;font-size:9px;color:#003c7a;letter-spacing:1px;margin-bottom:10px;}
+.land-sub{font-family:'Press Start 2P',monospace;font-size:8px;color:#003c7a;letter-spacing:2px;margin-bottom:18px;}
 .land-h1{
-  font-family:Georgia,serif;font-size:62px;font-weight:900;color:#002060;
-  letter-spacing:-3px;line-height:.9;margin-bottom:14px;
+  font-family:'Press Start 2P',monospace;
+  font-size:22px;line-height:1.7;
+  color:#001a4d;letter-spacing:2px;
+  text-shadow:
+    3px 3px 0 rgba(0,60,140,.25),
+    -1px -1px 0 rgba(255,255,255,.6);
+  margin-bottom:6px;
 }
 .land-badge{
-  display:block;background:#0078d7;color:#fff;
+  display:block;
   font-family:'Press Start 2P',monospace;font-size:10px;font-weight:700;
-  padding:5px 14px;border-radius:3px;margin:10px auto 0;
-  width:fit-content;letter-spacing:2px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 4px rgba(0,0,0,.3);
+  color:#fff;background:linear-gradient(to bottom,#1a7ee8,#0050c0);
+  padding:6px 18px;border-radius:3px;margin:4px auto 0;
+  width:fit-content;letter-spacing:3px;
+  border:1px solid #0040a0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 3px 6px rgba(0,0,0,.35),2px 2px 0 #003080;
 }
 .enter-btn{
   margin-top:18px;background:none;border:none;
@@ -95,128 +102,168 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ══════════════════ HERO DESKTOP ══════════════════ */
 #hero{
   position:relative;width:100vw;height:100vh;overflow:hidden;
-  /* Bliss sky */
   background:linear-gradient(to bottom,
-    #1c5fa8 0%,
-    #2e7abf 8%,
-    #4899d4 18%,
-    #62aee0 30%,
-    #82c3eb 42%,
-    #a4d4f0 50%
+    #0f3d7a 0%,
+    #1a5aaa 7%,
+    #2878cc 16%,
+    #4096d8 26%,
+    #5aaee0 36%,
+    #74c0e8 45%,
+    #96d0f0 52%,
+    #b4dff5 58%,
+    #c8e8f8 62%
   );
 }
-/* Rolling green Bliss hill using SVG clip */
-#hero::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,
-    transparent 0%,transparent 47%,
-    #5db544 47%,#4ea036 55%,#3a8a28 68%,#2a6e18 82%,#1e5610 100%
-  );
-  clip-path:polygon(
-    0% 100%,
-    0% 62%,
-    2% 59%,5% 57%,8% 55.5%,12% 54.5%,16% 54%,20% 53.8%,
-    25% 53.5%,30% 52.8%,35% 51.5%,40% 49.5%,45% 47.5%,
-    50% 46%,55% 45%,60% 44.8%,65% 45.2%,70% 46.5%,
-    75% 48.5%,80% 51%,85% 53.5%,88% 55%,91% 56.5%,
-    94% 58%,97% 60%,100% 62%,
-    100% 100%
-  );
+/* SVG terrain positioned at bottom */
+.terrain{
+  position:absolute;bottom:0;left:0;width:100%;height:55%;
+  pointer-events:none;
+}
+.terrain-full{
+  position:absolute;bottom:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;
 }
 
-/* ── CLOUDS (Bliss wispy style) ── */
-.clouds{position:absolute;top:0;left:0;right:0;height:52%;pointer-events:none;overflow:hidden;}
+/* ── CLOUDS ── */
+.clouds{position:absolute;top:0;left:0;right:0;height:62%;pointer-events:none;overflow:hidden;z-index:2;}
 .cloud{position:absolute;will-change:transform;}
 
-/* ── Large cumulus (right-center, like Bliss) ── */
-.cloud-main{
-  width:300px;height:110px;
-  top:8%;right:8%;
+/* ── Cloud puff base ── */
+.cloud-base{
   border-radius:50% 50% 50% 50%/55% 55% 45% 45%;
-  background:radial-gradient(ellipse at 44% 22%,
-    #fff 0%,#f7f7f7 28%,#e8e8e8 55%,#d2d2d2 80%,#bababa 100%
+  background:radial-gradient(ellipse at 44% 20%,
+    #ffffff 0%,#f4f4f4 22%,#e4e4e4 48%,#ccc 72%,#b0b0b0 100%
   );
   box-shadow:
-    inset 0 -12px 22px rgba(0,0,0,.14),
-    inset 0 8px 16px rgba(255,255,255,.95),
-    0 6px 18px rgba(0,0,0,.2);
+    inset 0 -14px 24px rgba(0,0,0,.15),
+    inset 0 8px 18px rgba(255,255,255,.95),
+    0 8px 20px rgba(0,0,0,.18);
+}
+/* Large cumulus — right side, Bliss-style */
+.cloud-main{
+  width:320px;height:118px;
+  top:5%;left:52%;
+  animation:cloudSway1 90s ease-in-out infinite;
 }
 .cloud-main::before{
   content:'';position:absolute;
-  width:170px;height:155px;top:-72px;left:40px;
+  width:180px;height:168px;top:-80px;left:35px;
   border-radius:50%;
-  background:radial-gradient(ellipse at 42% 28%,#fff 0%,#f0f0f0 38%,#d8d8d8 72%,#bebebe 100%);
-  box-shadow:inset 0 -8px 16px rgba(0,0,0,.13),inset 0 6px 10px rgba(255,255,255,.9);
+  background:radial-gradient(ellipse at 40% 26%,#fff 0%,#efefef 36%,#d8d8d8 70%,#bbb 100%);
+  box-shadow:inset 0 -10px 18px rgba(0,0,0,.13),inset 0 6px 12px rgba(255,255,255,.92);
 }
 .cloud-main::after{
   content:'';position:absolute;
-  width:130px;height:120px;top:-50px;left:170px;
+  width:145px;height:130px;top:-55px;left:175px;
   border-radius:50%;
-  background:radial-gradient(ellipse at 42% 28%,#fff 0%,#f0f0f0 38%,#dadada 72%,#c0c0c0 100%);
-  box-shadow:inset 0 -6px 12px rgba(0,0,0,.12),inset 0 5px 8px rgba(255,255,255,.9);
+  background:radial-gradient(ellipse at 40% 26%,#fff 0%,#efefef 36%,#dadada 70%,#bbb 100%);
+  box-shadow:inset 0 -8px 14px rgba(0,0,0,.12),inset 0 5px 10px rgba(255,255,255,.9);
 }
 
-/* ── Wispy streak clouds ── */
+/* Medium cumulus — left */
+.cloud-med{
+  width:200px;height:75px;
+  top:12%;left:-220px;
+  border-radius:50px;
+  background:radial-gradient(ellipse at 44% 22%,#fff 0%,#f2f2f2 35%,#ddd 65%,#bbb 100%);
+  box-shadow:inset 0 -8px 16px rgba(0,0,0,.13),inset 0 5px 12px rgba(255,255,255,.92),0 5px 14px rgba(0,0,0,.15);
+  animation:cloudSway2 65s ease-in-out 6s infinite;
+}
+.cloud-med::before{
+  content:'';position:absolute;
+  width:100px;height:95px;top:-48px;left:25px;border-radius:50%;
+  background:radial-gradient(#fff 0%,#eee 50%,#ccc 100%);
+  box-shadow:inset 0 -6px 12px rgba(0,0,0,.12);
+}
+.cloud-med::after{
+  content:'';position:absolute;
+  width:78px;height:72px;top:-36px;left:105px;border-radius:50%;
+  background:radial-gradient(#fff 0%,#eee 50%,#ccc 100%);
+  box-shadow:inset 0 -5px 10px rgba(0,0,0,.11);
+}
+
+/* Small puff */
+.cloud-sm{
+  width:130px;height:52px;
+  top:22%;left:-150px;
+  border-radius:40px;
+  background:radial-gradient(ellipse at 44% 24%,#fff 0%,#f0f0f0 45%,#ccc 100%);
+  box-shadow:inset 0 -5px 10px rgba(0,0,0,.11),inset 0 4px 8px rgba(255,255,255,.9),0 3px 10px rgba(0,0,0,.13);
+  animation:cloudSway3 45s ease-in-out 14s infinite;opacity:.88;
+}
+.cloud-sm::before{
+  content:'';position:absolute;
+  width:62px;height:62px;top:-32px;left:16px;border-radius:50%;
+  background:radial-gradient(#fff 0%,#eee 52%,#ccc 100%);
+}
+.cloud-sm::after{
+  content:'';position:absolute;
+  width:50px;height:50px;top:-24px;left:65px;border-radius:50%;
+  background:radial-gradient(#fff 0%,#eee 52%,#ccc 100%);
+}
+
+/* ── Wispy cirrus streaks ── */
 .cloud-wisp{
-  height:18px;border-radius:50px;
+  height:14px;border-radius:50px;
+  filter:blur(4px);
   background:linear-gradient(to right,
     rgba(255,255,255,0) 0%,
-    rgba(255,255,255,.82) 20%,
-    rgba(255,255,255,.92) 50%,
-    rgba(255,255,255,.82) 80%,
+    rgba(255,255,255,.78) 18%,
+    rgba(255,255,255,.9) 50%,
+    rgba(255,255,255,.78) 82%,
     rgba(255,255,255,0) 100%
   );
-  filter:blur(3px);
 }
-.wisp-1{width:220px;top:6%;left:5%;animation:cloudDrift 60s linear infinite;}
-.wisp-2{width:160px;height:12px;top:10%;left:18%;animation:cloudDrift 72s linear 10s infinite;opacity:.7;}
-.wisp-3{width:280px;height:14px;top:14%;left:-280px;animation:cloudDrift 55s linear 22s infinite;opacity:.75;}
-.wisp-4{width:120px;height:10px;top:4%;left:38%;animation:cloudDrift 80s linear 5s infinite;opacity:.6;}
-.wisp-5{width:200px;height:16px;top:20%;left:-200px;animation:cloudDrift 48s linear 16s infinite;opacity:.65;}
+.wisp-1{width:260px;height:10px;top:5%;left:8%;  animation:wispFloat1 70s ease-in-out infinite;opacity:.8;}
+.wisp-2{width:180px;height:8px; top:9%;left:30%; animation:wispFloat2 85s ease-in-out 12s infinite;opacity:.65;}
+.wisp-3{width:320px;height:12px;top:16%;left:-320px;animation:wispFloat3 58s ease-in-out 25s infinite;opacity:.72;}
+.wisp-4{width:140px;height:7px; top:3%;left:60%; animation:wispFloat1 95s ease-in-out 8s infinite;opacity:.55;}
+.wisp-5{width:210px;height:9px; top:28%;left:-210px;animation:wispFloat2 52s ease-in-out 3s infinite;opacity:.6;}
+.wisp-6{width:170px;height:8px; top:20%;left:20%; animation:wispFloat3 78s ease-in-out 18s infinite;opacity:.5;}
 
-/* ── Small drifting puff ── */
-.cloud-a{
-  width:120px;height:48px;top:24%;left:-140px;
-  border-radius:40px;
-  background:radial-gradient(ellipse at 45% 28%,#fff 0%,#efefef 52%,#ccc 100%);
-  box-shadow:inset 0 -5px 10px rgba(0,0,0,.12),inset 0 4px 8px rgba(255,255,255,.9),0 3px 8px rgba(0,0,0,.15);
-  animation:cloudDrift 38s linear 3s infinite;
+/* ── Cloud animations — combined X+Y+scale ── */
+@keyframes cloudSway1{
+  0%   {transform:translateX(-420px) translateY(0px) scale(1);}
+  15%  {transform:translateX(15vw)  translateY(-14px) scale(1.02);}
+  35%  {transform:translateX(35vw)  translateY(8px)  scale(.98);}
+  55%  {transform:translateX(55vw)  translateY(-10px) scale(1.01);}
+  75%  {transform:translateX(75vw)  translateY(6px)  scale(.99);}
+  100% {transform:translateX(calc(100vw + 420px)) translateY(0px) scale(1);}
 }
-.cloud-a::before{
-  content:'';position:absolute;
-  width:60px;height:60px;top:-30px;left:18px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 55%,#ccc 100%);
-  box-shadow:inset 0 -4px 8px rgba(0,0,0,.12);
+@keyframes cloudSway2{
+  0%   {transform:translateX(0px)  translateY(0px) scale(1);}
+  20%  {transform:translateX(22vw) translateY(12px) scale(1.03);}
+  40%  {transform:translateX(44vw) translateY(-6px) scale(.97);}
+  60%  {transform:translateX(65vw) translateY(10px) scale(1.02);}
+  80%  {transform:translateX(82vw) translateY(-4px) scale(.99);}
+  100% {transform:translateX(calc(100vw + 300px)) translateY(0px) scale(1);}
 }
-.cloud-a::after{
-  content:'';position:absolute;
-  width:48px;height:48px;top:-22px;left:60px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 55%,#ccc 100%);
-  box-shadow:inset 0 -4px 8px rgba(0,0,0,.12);
+@keyframes cloudSway3{
+  0%   {transform:translateX(0px)  translateY(0px);}
+  30%  {transform:translateX(30vw) translateY(-18px) scale(1.04);}
+  60%  {transform:translateX(65vw) translateY(8px)  scale(.96);}
+  100% {transform:translateX(calc(100vw + 250px)) translateY(0px) scale(1);}
 }
-.cloud-b{
-  width:175px;height:65px;top:30%;left:-200px;
-  border-radius:50px;
-  background:radial-gradient(ellipse at 45% 28%,#fff 0%,#efefef 52%,#ccc 100%);
-  box-shadow:inset 0 -6px 12px rgba(0,0,0,.12),inset 0 4px 8px rgba(255,255,255,.9),0 3px 10px rgba(0,0,0,.15);
-  animation:cloudDrift 50s linear 20s infinite;opacity:.8;
+@keyframes wispFloat1{
+  0%   {transform:translateX(0)     translateY(0)    rotate(-1.5deg);opacity:0;}
+  5%   {opacity:.8;}
+  40%  {transform:translateX(42vw)  translateY(-10px) rotate(.8deg);}
+  90%  {opacity:.8;}
+  100% {transform:translateX(calc(100vw + 320px)) translateY(4px) rotate(-1deg);opacity:0;}
 }
-.cloud-b::before{
-  content:'';position:absolute;
-  width:88px;height:82px;top:-42px;left:28px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 55%,#ccc 100%);
-  box-shadow:inset 0 -5px 10px rgba(0,0,0,.12);
+@keyframes wispFloat2{
+  0%   {transform:translateX(0)     translateY(0)    rotate(.8deg);opacity:0;}
+  8%   {opacity:.65;}
+  50%  {transform:translateX(50vw)  translateY(12px) rotate(-1.2deg);}
+  92%  {opacity:.65;}
+  100% {transform:translateX(calc(100vw + 260px)) translateY(-3px) rotate(1deg);opacity:0;}
 }
-.cloud-b::after{
-  content:'';position:absolute;
-  width:68px;height:65px;top:-32px;left:92px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 55%,#ccc 100%);
-  box-shadow:inset 0 -4px 8px rgba(0,0,0,.12);
-}
-@keyframes cloudDrift{
-  0%  {transform:translateX(0);}
-  100%{transform:translateX(calc(100vw + 400px));}
+@keyframes wispFloat3{
+  0%   {transform:translateX(0)     translateY(0)    rotate(-0.5deg) scaleX(1);opacity:0;}
+  6%   {opacity:.7;}
+  45%  {transform:translateX(45vw)  translateY(-8px) rotate(1.5deg) scaleX(1.08);}
+  94%  {opacity:.7;}
+  100% {transform:translateX(calc(100vw + 380px)) translateY(2px) rotate(-.5deg) scaleX(1);opacity:0;}
 }
 
 /* ── XP LOGO ── */
@@ -238,7 +285,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 .icons{
   position:absolute;top:10px;left:8px;
   display:flex;flex-direction:column;gap:2px;
-  z-index:10;
+  z-index:20;
 }
 .icon{
   width:76px;padding:6px 4px 5px;
@@ -261,10 +308,11 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ── CENTRE HERO CONTENT ── */
 .hero-center{
   position:absolute;
-  top:50%;left:50%;
+  top:30%;left:50%;
   transform:translate(-50%,-50%);
   display:flex;flex-direction:column;align-items:center;gap:20px;
   pointer-events:none;
+  z-index:10;
 }
 /* Welcome XP dialog */
 .welcome-win{
@@ -567,15 +615,136 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   <!-- ── HERO DESKTOP ── -->
   <div id="hero">
     <div class="clouds">
-      <div class="cloud cloud-main"></div>
+      <div class="cloud cloud-main cloud-base"></div>
+      <div class="cloud cloud-med"></div>
+      <div class="cloud cloud-sm"></div>
       <div class="cloud cloud-wisp wisp-1"></div>
       <div class="cloud cloud-wisp wisp-2"></div>
       <div class="cloud cloud-wisp wisp-3"></div>
       <div class="cloud cloud-wisp wisp-4"></div>
       <div class="cloud cloud-wisp wisp-5"></div>
-      <div class="cloud cloud-a"></div>
-      <div class="cloud cloud-b"></div>
+      <div class="cloud cloud-wisp wisp-6"></div>
     </div>
+
+    <!-- SVG Terrain — rich textured Bliss landscape -->
+    <svg class="terrain-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Sky haze at horizon -->
+        <linearGradient id="hazeGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#c8e8f8" stop-opacity="0"/>
+          <stop offset="1" stop-color="#d8eefc" stop-opacity=".55"/>
+        </linearGradient>
+        <!-- Distant mountain gradient -->
+        <linearGradient id="mtFarGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7ab0d0"/>
+          <stop offset="0.5" stop-color="#5a9abf"/>
+          <stop offset="1" stop-color="#4a8aaf"/>
+        </linearGradient>
+        <!-- Main hill gradient -->
+        <linearGradient id="hillGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#70d048"/>
+          <stop offset="0.18" stop-color="#5ec040"/>
+          <stop offset="0.4" stop-color="#48a832"/>
+          <stop offset="0.65" stop-color="#368820"/>
+          <stop offset="0.85" stop-color="#246812"/>
+          <stop offset="1"   stop-color="#164808"/>
+        </linearGradient>
+        <!-- Grass highlight streaks -->
+        <linearGradient id="grassHi" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#90e060" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#60c040" stop-opacity="0"/>
+        </linearGradient>
+        <!-- Shadow valley gradient -->
+        <linearGradient id="valleyShad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1a4a08" stop-opacity=".35"/>
+          <stop offset="1" stop-color="#0a2804" stop-opacity=".6"/>
+        </linearGradient>
+        <!-- Foreground grass -->
+        <linearGradient id="fgGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"  stop-color="#82d856"/>
+          <stop offset="0.3" stop-color="#5cb838"/>
+          <stop offset="0.7" stop-color="#3a8820"/>
+          <stop offset="1"  stop-color="#1e5810"/>
+        </linearGradient>
+        <!-- Distant right hill gradient -->
+        <linearGradient id="hillRGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"  stop-color="#58b030"/>
+          <stop offset="0.5" stop-color="#3e8820"/>
+          <stop offset="1"  stop-color="#286010"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Horizon haze overlay -->
+      <rect x="0" y="440" width="1440" height="100" fill="url(#hazeGrad)"/>
+
+      <!-- Distant hazy mountains (atmospheric perspective = blue-grey) -->
+      <path d="M0,560 Q120,490 240,510 Q320,480 400,500 Q500,465 580,490 Q680,455 760,475
+               Q860,445 950,468 Q1060,438 1150,462 Q1260,440 1350,458 Q1400,452 1440,460
+               L1440,640 L0,640 Z"
+        fill="url(#mtFarGrad)" opacity=".45"/>
+
+      <!-- Distant mountain snow caps hint -->
+      <path d="M580,490 Q590,480 600,490 Z M760,475 Q772,463 784,475 Z M950,468 Q963,455 976,468 Z"
+        fill="rgba(255,255,255,.3)" stroke="none"/>
+
+      <!-- Main rolling green hill — the Bliss signature shape -->
+      <path d="M-10,900 L-10,640
+               Q80,610 160,600 Q240,590 320,582 Q400,572 480,558
+               Q560,542 640,525 Q720,510 800,502
+               Q860,496 920,499 Q980,502 1040,510
+               Q1120,520 1200,538 Q1280,556 1360,575
+               Q1400,584 1440,592 L1440,900 Z"
+        fill="url(#hillGrad)"/>
+
+      <!-- Grass highlight band (sunlit top of hill) -->
+      <path d="M-10,650 Q160,618 320,600 Q480,580 640,542 Q800,516 920,512
+               Q1080,515 1220,545 Q1360,572 1440,600 L1440,640
+               Q1360,612 1220,584 Q1080,554 920,550
+               Q800,548 640,576 Q480,610 320,630 Q160,648 -10,670 Z"
+        fill="url(#grassHi)"/>
+
+      <!-- Grass texture — subtle diagonal light streaks -->
+      <g opacity=".18" stroke="#a0e060" stroke-width="1.5" fill="none">
+        <path d="M80,660 Q100,640 120,660"/>
+        <path d="M200,640 Q225,618 250,640"/>
+        <path d="M380,610 Q408,588 436,610"/>
+        <path d="M560,575 Q592,551 624,575"/>
+        <path d="M720,540 Q754,515 788,540"/>
+        <path d="M900,522 Q935,496 970,522"/>
+        <path d="M1100,540 Q1136,514 1172,540"/>
+        <path d="M1280,568 Q1318,542 1356,568"/>
+        <path d="M140,700 Q168,678 196,700"/>
+        <path d="M460,652 Q492,628 524,652"/>
+        <path d="M820,598 Q856,572 892,598"/>
+        <path d="M1200,612 Q1238,585 1276,612"/>
+      </g>
+
+      <!-- Valley shadow (right side descent) -->
+      <path d="M920,499 Q980,502 1040,510 Q1120,520 1200,538
+               Q1200,560 1120,548 Q1040,536 980,530 Q940,524 920,520 Z"
+        fill="url(#valleyShad)"/>
+
+      <!-- Right-side secondary hill (adds depth) -->
+      <path d="M1100,900 L1100,560 Q1180,545 1260,555 Q1340,562 1440,575
+               L1440,900 Z"
+        fill="url(#hillRGrad)" opacity=".6"/>
+
+      <!-- Foreground grass strip (bottom) -->
+      <path d="M-10,820 Q180,790 360,800 Q540,808 720,798
+               Q900,788 1080,800 Q1260,810 1440,800 L1440,900 L-10,900 Z"
+        fill="url(#fgGrad)"/>
+
+      <!-- Foreground grass texture -->
+      <g opacity=".22" stroke="#90e050" stroke-width="2" fill="none">
+        <path d="M60,840 Q72,824 84,840"/>
+        <path d="M200,830 Q216,812 232,830"/>
+        <path d="M380,838 Q398,818 416,838"/>
+        <path d="M600,826 Q620,806 640,826"/>
+        <path d="M820,832 Q842,810 864,832"/>
+        <path d="M1040,828 Q1064,806 1088,828"/>
+        <path d="M1260,836 Q1286,812 1312,836"/>
+      </g>
+    </svg>
 
     <!-- XP Logo -->
     <div class="xp-logo">
@@ -1086,14 +1255,11 @@ function initScrollObserver(){
   });
 }
 
-// ── PARALLAX CLOUDS on scroll ─────────────────────────────
+// ── PARALLAX on scroll — terrain + clouds ─────────────────
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  const main = document.querySelector('.cloud-main');
-  if(main) main.style.transform = `translateY(${scrollY * 0.12}px)`;
-  document.querySelectorAll('.cloud-wisp').forEach((c,i)=>{
-    c.style.transform = `translateY(${scrollY*(0.06+i*0.02)}px)`;
-  });
+  const sy = window.scrollY;
+  const terrain = document.querySelector('.terrain-full');
+  if(terrain) terrain.style.transform = `translateY(${sy * 0.25}px)`;
 }, {passive:true});
 
 // ── START MENU ────────────────────────────────────────────
