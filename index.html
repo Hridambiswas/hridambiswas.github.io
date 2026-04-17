@@ -19,17 +19,16 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M4 1 L4 19 L8 15 L11 22 L14 21 L11 14 L17 14 Z' fill='white' stroke='black' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 4 1, pointer;
 }
 
-/* ══════════════════ SPARKLE TRAIL ══════════════════ */
+/* ══════════════════ XP CURSOR TRAIL ══════════════════ */
 .spark{
   position:fixed;pointer-events:none;z-index:99999;
-  width:5px;height:5px;border-radius:1px;
-  animation:sparkFly .7s ease-out forwards;
+  width:3px;height:3px;
   image-rendering:pixelated;
+  animation:xpTrail .5s ease-out forwards;
 }
-@keyframes sparkFly{
-  0%  {transform:translate(-50%,-50%) scale(1.2);opacity:1;}
-  60% {transform:translate(-50%,-50%) translateY(-18px) scale(.6);opacity:.7;}
-  100%{transform:translate(-50%,-50%) translateY(-30px) scale(0);opacity:0;}
+@keyframes xpTrail{
+  0%  {opacity:.75;transform:translate(-50%,-50%) scale(1);}
+  100%{opacity:0; transform:translate(-50%,-50%) scale(0) translateY(-8px);}
 }
 
 /* ══════════════════ LANDING ══════════════════ */
@@ -104,6 +103,12 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   position:relative;width:100vw;height:100vh;overflow:hidden;
   background:url('s4.png') center center / cover no-repeat;
   image-rendering:pixelated;
+}
+/* Cover Google Lens watermark in bottom-left of s4.png */
+#hero::before{
+  content:'';position:absolute;bottom:0;left:0;
+  width:80px;height:80px;z-index:5;pointer-events:none;
+  background:radial-gradient(ellipse at 0% 100%, #1a5008 0%, #1e5c0a 40%, #226010 65%, transparent 100%);
 }
 
 /* ── PIXEL CLOUDS (matching s4 pixel-art style) ── */
@@ -583,7 +588,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
     <!-- Desktop Icons (left) -->
     <div class="icons">
-      <div class="icon" ondblclick="scrollTo('about')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('about')" onclick="selIcon(this)">
         <div class="ic">
           <!-- Computer SVG (About Me) -->
           <svg viewBox="0 0 44 40" width="40" height="36" xmlns="http://www.w3.org/2000/svg">
@@ -599,7 +604,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">About Me</div>
       </div>
 
-      <div class="icon" ondblclick="scrollTo('exp')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('exp')" onclick="selIcon(this)">
         <div class="ic">
           <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
             <path d="M2,34 L2,10 Q2,8 4,8 L18,8 L21,4 Q22,2 24,2 L42,2 Q42,2 42,4 L42,8" fill="#c07818" stroke="#a06010" stroke-width="1"/>
@@ -611,7 +616,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">Experience</div>
       </div>
 
-      <div class="icon" ondblclick="scrollTo('proj')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('proj')" onclick="selIcon(this)">
         <div class="ic">
           <!-- XP Folder -->
           <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
@@ -629,7 +634,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">Projects</div>
       </div>
 
-      <div class="icon" ondblclick="scrollTo('skills')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('skills')" onclick="selIcon(this)">
         <div class="ic">
           <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
             <path d="M2,34 L2,10 Q2,8 4,8 L18,8 L21,4 Q22,2 24,2 L42,2 Q42,2 42,4 L42,8" fill="#c07818" stroke="#a06010" stroke-width="1"/>
@@ -641,7 +646,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">Skills</div>
       </div>
 
-      <div class="icon" ondblclick="scrollTo('edu')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('edu')" onclick="selIcon(this)">
         <div class="ic">
           <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
             <path d="M2,34 L2,10 Q2,8 4,8 L18,8 L21,4 Q22,2 24,2 L42,2 Q42,2 42,4 L42,8" fill="#c07818" stroke="#a06010" stroke-width="1"/>
@@ -653,7 +658,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">Education</div>
       </div>
 
-      <div class="icon" ondblclick="scrollTo('ach')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('ach')" onclick="selIcon(this)">
         <div class="ic">
           <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
             <path d="M2,34 L2,10 Q2,8 4,8 L18,8 L21,4 Q22,2 24,2 L42,2 Q42,2 42,4 L42,8" fill="#c07818" stroke="#a06010" stroke-width="1"/>
@@ -665,7 +670,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">Achievements</div>
       </div>
 
-      <div class="icon" ondblclick="scrollTo('contact')" onclick="selIcon(this)">
+      <div class="icon" ondblclick="navTo('contact')" onclick="selIcon(this)">
         <div class="ic">
           <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
             <path d="M2,34 L2,10 Q2,8 4,8 L18,8 L21,4 Q22,2 24,2 L42,2 Q42,2 42,4 L42,8" fill="#c07818" stroke="#a06010" stroke-width="1"/>
@@ -942,14 +947,14 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
     <div class="sm-name">Hridam Biswas</div>
   </div>
   <div class="sm-body">
-    <div class="sm-item" onclick="scrollTo('about');toggleMenu()">🖥️ &nbsp;About Me</div>
-    <div class="sm-item" onclick="scrollTo('exp');toggleMenu()">💼 &nbsp;Experience</div>
-    <div class="sm-item" onclick="scrollTo('proj');toggleMenu()">📁 &nbsp;Projects</div>
-    <div class="sm-item" onclick="scrollTo('skills');toggleMenu()">🛠️ &nbsp;Skills</div>
+    <div class="sm-item" onclick="navTo('about');toggleMenu()">🖥️ &nbsp;About Me</div>
+    <div class="sm-item" onclick="navTo('exp');toggleMenu()">💼 &nbsp;Experience</div>
+    <div class="sm-item" onclick="navTo('proj');toggleMenu()">📁 &nbsp;Projects</div>
+    <div class="sm-item" onclick="navTo('skills');toggleMenu()">🛠️ &nbsp;Skills</div>
     <div class="sm-sep"></div>
-    <div class="sm-item" onclick="scrollTo('edu');toggleMenu()">🎓 &nbsp;Education</div>
-    <div class="sm-item" onclick="scrollTo('ach');toggleMenu()">🏆 &nbsp;Achievements</div>
-    <div class="sm-item" onclick="scrollTo('contact');toggleMenu()">📧 &nbsp;Contact</div>
+    <div class="sm-item" onclick="navTo('edu');toggleMenu()">🎓 &nbsp;Education</div>
+    <div class="sm-item" onclick="navTo('ach');toggleMenu()">🏆 &nbsp;Achievements</div>
+    <div class="sm-item" onclick="navTo('contact');toggleMenu()">📧 &nbsp;Contact</div>
     <div class="sm-sep"></div>
     <div class="sm-item" onclick="openExt('https://github.com/Hridambiswas');toggleMenu()">🐙 &nbsp;GitHub</div>
     <div class="sm-item" onclick="openExt('https://www.linkedin.com/in/hridam-biswas-22b0392a5/');toggleMenu()">🔗 &nbsp;LinkedIn</div>
@@ -1031,24 +1036,20 @@ function updateClock(){
   document.getElementById('clock').textContent = `${h}:${m} ${ap}`;
 }
 
-// ── SPARKLE TRAIL ─────────────────────────────────────────
-const SPARK_COLORS = ['#0078d7','#00a4ef','#7fba00','#ffb900','#f25022','#ffffff'];
-let lastSpark = 0;
+// ── XP CURSOR TRAIL (subtle pixel dots, blue/white) ───────
+const TRAIL_COLORS = ['#ffffff','#c8dff8','#90bce8','#5898d0'];
+let lastTrail = 0;
 document.addEventListener('mousemove', e => {
   const now = Date.now();
-  if(now - lastSpark < 35) return;
-  lastSpark = now;
-  for(let i = 0; i < 2; i++){
-    const s = document.createElement('div');
-    s.className = 'spark';
-    s.style.left = (e.clientX + (Math.random()-0.5)*12) + 'px';
-    s.style.top  = (e.clientY + (Math.random()-0.5)*12) + 'px';
-    s.style.background = SPARK_COLORS[Math.floor(Math.random()*SPARK_COLORS.length)];
-    s.style.width = s.style.height = (Math.random()*4+2) + 'px';
-    s.style.animationDelay = (Math.random()*0.15) + 's';
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 750);
-  }
+  if(now - lastTrail < 55) return;
+  lastTrail = now;
+  const s = document.createElement('div');
+  s.className = 'spark';
+  s.style.left = (e.clientX - 1) + 'px';
+  s.style.top  = (e.clientY - 1) + 'px';
+  s.style.background = TRAIL_COLORS[Math.floor(Math.random()*TRAIL_COLORS.length)];
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 500);
 });
 
 // ── ICON SELECTION ─────────────────────────────────────────
@@ -1062,9 +1063,9 @@ document.getElementById('hero').addEventListener('click', e => {
 });
 
 // ── SCROLL TO SECTION ──────────────────────────────────────
-function scrollTo(id){
+function navTo(id){
   const el = document.getElementById('sec-'+id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // ── OPEN EXTERNAL ──────────────────────────────────────────
@@ -1116,7 +1117,7 @@ const secObs = new IntersectionObserver(entries => {
         item.className = 'tbar-item active';
         item.dataset.id = id;
         item.innerHTML = `${({about:'🖥️',exp:'💼',proj:'📁',skills:'🛠️',edu:'🎓',ach:'🏆',contact:'📧'}[id]||'📄')} ${secNames[id]||id}`;
-        item.onclick = () => scrollTo(id);
+        item.onclick = () => navTo(id);
         document.getElementById('tbar-items').appendChild(item);
       }
       document.querySelectorAll('.tbar-item').forEach(t=>t.classList.remove('active'));
@@ -1132,25 +1133,32 @@ setTimeout(()=>{
 
 // ── PIXEL HELPER ──────────────────────────────────────
 const TIPS = [
-  "👋 Hey! I'm XP-Bot, your guide!\nDouble-click any folder to jump to that section.",
+  "👋 I'm XP-Bot! Double-click any folder icon to jump to that section.",
   "📜 Scroll down to explore Experience, Projects, Skills and more!",
-  "🖱️ Try double-clicking icons on the left to navigate sections.",
   "⌨️ Use the Start menu (bottom-left) for quick navigation.",
-  "🏆 Check out the Achievements section — some cool stuff in there!",
-  "📁 All sections open like Windows XP windows as you scroll.",
-  "🔗 You can find GitHub & LinkedIn links in the Contact section.",
-  "💡 Tip: Click the ✕ on any window... just kidding, I stay open!",
+  "🏆 Check the Achievements section — some cool stuff in there!",
+  "🔗 GitHub & LinkedIn links are in the Contact section.",
 ];
 let tipIdx = 0;
+let atBottom = false;
+
 function nextTip(){
+  if(atBottom) return;
   const bubble = document.getElementById('ph-bubble');
   const txt = document.getElementById('ph-text');
-  txt.textContent = TIPS[tipIdx % TIPS.length];
+  txt.innerHTML = TIPS[tipIdx % TIPS.length];
   bubble.style.display = 'block';
   tipIdx++;
 }
 function closeTip(){
   document.getElementById('ph-bubble').style.display = 'none';
+}
+function showShutdown(){
+  atBottom = true;
+  const bubble = document.getElementById('ph-bubble');
+  const txt = document.getElementById('ph-text');
+  txt.innerHTML = `That's everything! 👋<br><br><button onclick="window.close()" style="font-family:'Press Start 2P',monospace;font-size:8px;background:linear-gradient(to bottom,#c84030,#902010);color:#fff;border:1px solid #601808;padding:6px 12px;border-radius:3px;cursor:pointer;width:100%;box-shadow:0 2px 0 #601808,inset 0 1px 0 rgba(255,255,255,.2)">⏻ SHUT DOWN</button>`;
+  bubble.style.display = 'block';
 }
 // Show helper once page enters
 document.getElementById('enterBtn').addEventListener('click',()=>{
@@ -1159,6 +1167,12 @@ document.getElementById('enterBtn').addEventListener('click',()=>{
     nextTip();
   }, 1200);
 });
+// Detect bottom of page
+const footerObs = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting) showShutdown();
+  else { atBottom = false; }
+},{threshold:0.5});
+setTimeout(()=>{ const f=document.getElementById('footer'); if(f) footerObs.observe(f); },500);
 </script>
 </body>
 </html>
