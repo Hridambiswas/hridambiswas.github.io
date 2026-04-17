@@ -22,9 +22,9 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ══════════════════ XP CURSOR TRAIL ══════════════════ */
 .spark{
   position:fixed;pointer-events:none;z-index:99999;
-  width:3px;height:3px;
+  width:4px;height:4px;
   image-rendering:pixelated;
-  animation:xpTrail .5s ease-out forwards;
+  animation:xpTrail .6s ease-out forwards;
 }
 @keyframes xpTrail{
   0%  {opacity:.75;transform:translate(-50%,-50%) scale(1);}
@@ -718,17 +718,6 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
         <div class="lb">Contact</div>
       </div>
 
-      <div class="icon" ondblclick="openExt('https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ')" onclick="selIcon(this)">
-        <div class="ic">
-          <svg viewBox="0 0 44 38" width="40" height="34" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2,34 L2,10 Q2,8 4,8 L18,8 L21,4 Q22,2 24,2 L42,2 Q42,2 42,4 L42,8" fill="#c07818" stroke="#a06010" stroke-width="1"/>
-            <path d="M2,10 L42,10 L42,34 Q42,36 40,36 L4,36 Q2,36 2,34 Z" fill="#f5c840"/>
-            <path d="M2,10 L42,10 L42,15 L2,15 Z" fill="rgba(255,255,255,.45)"/>
-            <path d="M2,33 L42,33 L42,36 L4,36 Q2,36 2,34 Z" fill="rgba(0,0,0,.12)"/>
-          </svg>
-        </div>
-        <div class="lb">Publications</div>
-      </div>
     </div><!-- /icons -->
 
     <!-- Centre hero content -->
@@ -770,7 +759,6 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
       </div>
       <div class="scroll-hint">
         <div class="arrow">⬇</div>
-        <div class="hint-lbl">double-click icons or scroll</div>
       </div>
     </div>
 
@@ -955,6 +943,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
             <div class="contact-card" onclick="openExt('https://www.linkedin.com/in/hridam-biswas-22b0392a5/')"><div class="ci">🔗</div><div><div class="cl">LinkedIn</div><div class="cv">linkedin.com/in/hridam-biswas-22b0392a5</div></div></div>
             <div class="contact-card" onclick="openExt('https://github.com/Hridambiswas')"><div class="ci">🐙</div><div><div class="cl">GitHub</div><div class="cv">github.com/Hridambiswas</div></div></div>
             <div class="contact-card" onclick="openExt('https://scholar.google.com/citations?view_op=list_works&hl=en&user=0Tg1nYYAAAAJ')"><div class="ci">📚</div><div><div class="cl">Google Scholar</div><div class="cv">View Publications</div></div></div>
+            <div class="contact-card" onclick="openExt('tel:+918777562022')"><div class="ci">📱</div><div><div class="cl">Phone</div><div class="cv">+91 8777562022</div></div></div>
             <div class="contact-card"><div class="ci">📍</div><div><div class="cl">Location</div><div class="cv">Bidhannagar, West Bengal, India</div></div></div>
           </div>
         </div>
@@ -1074,19 +1063,21 @@ function updateClock(){
 }
 
 // ── XP CURSOR TRAIL (subtle pixel dots, blue/white) ───────
-const TRAIL_COLORS = ['#ffffff','#c8dff8','#90bce8','#5898d0'];
+const TRAIL_COLORS = ['#ffffff','#c8dff8','#90bce8','#5898d0','#ffe87c'];
 let lastTrail = 0;
 document.addEventListener('mousemove', e => {
   const now = Date.now();
-  if(now - lastTrail < 55) return;
+  if(now - lastTrail < 28) return;
   lastTrail = now;
-  const s = document.createElement('div');
-  s.className = 'spark';
-  s.style.left = (e.clientX - 1) + 'px';
-  s.style.top  = (e.clientY - 1) + 'px';
-  s.style.background = TRAIL_COLORS[Math.floor(Math.random()*TRAIL_COLORS.length)];
-  document.body.appendChild(s);
-  setTimeout(() => s.remove(), 500);
+  for(let i = 0; i < 2; i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    s.style.left = (e.clientX + (i === 1 ? Math.random()*6-3 : -1)) + 'px';
+    s.style.top  = (e.clientY + (i === 1 ? Math.random()*6-3 : -1)) + 'px';
+    s.style.background = TRAIL_COLORS[Math.floor(Math.random()*TRAIL_COLORS.length)];
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 600);
+  }
 });
 
 // ── ICON SELECTION ─────────────────────────────────────────
