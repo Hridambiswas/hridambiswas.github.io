@@ -47,7 +47,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   background:#d4e8f4;border:2px solid #6090c8;border-top:none;
   border-radius:0 0 5px 5px;padding:34px 42px 30px;text-align:center;
 }
-.land-sub{font-family:'Press Start 2P',monospace;font-size:8px;color:#003c7a;letter-spacing:2px;margin-bottom:18px;}
+.land-sub{font-family:'Press Start 2P',monospace;font-size:13px;color:#003c7a;letter-spacing:2px;margin-bottom:12px;}
 .land-h1{
   font-family:'Press Start 2P',monospace;
   font-size:22px;line-height:1.7;
@@ -189,7 +189,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 }
 /* Welcome XP dialog */
 .welcome-win{
-  width:420px;
+  width:590px;
   border-radius:8px 8px 4px 4px;
   box-shadow:6px 6px 30px rgba(0,0,0,.45),0 0 60px rgba(255,255,255,.12);
   animation:floatWin 5s ease-in-out infinite, fadeInHero .8s ease .3s both;
@@ -202,20 +202,20 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 @keyframes fadeInHero{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .welcome-body{
   background:#ece9d8;border:2px solid #848484;border-top:none;
-  border-radius:0 0 4px 4px;padding:18px 22px;
+  border-radius:0 0 4px 4px;padding:24px 30px;
 }
 .welcome-body .avatar{
-  display:flex;align-items:center;gap:14px;margin-bottom:14px;
+  display:flex;align-items:center;gap:18px;margin-bottom:16px;
 }
 .welcome-body .avatar img{
-  width:56px;height:56px;border-radius:4px;
+  width:76px;height:76px;border-radius:4px;
   border:2px solid #8898c8;object-fit:cover;
 }
-.welcome-body .avatar .info .name{font-size:15px;font-weight:700;color:#002060;}
-.welcome-body .avatar .info .role{font-size:11px;color:#555;margin-top:2px;}
-.welcome-body .desc{font-size:11px;color:#444;line-height:1.7;margin-bottom:12px;}
+.welcome-body .avatar .info .name{font-size:20px;font-weight:700;color:#002060;}
+.welcome-body .avatar .info .role{font-size:13px;color:#555;margin-top:3px;}
+.welcome-body .desc{font-size:13px;color:#444;line-height:1.7;margin-bottom:14px;}
 .welcome-body .cta{
-  font-family:'Press Start 2P',monospace;font-size:8px;
+  font-family:'Press Start 2P',monospace;font-size:10px;
   color:#0050a8;text-align:center;
   animation:ctaPulse 1.8s ease-in-out infinite;
 }
@@ -491,10 +491,64 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ══════════════════ FOOTER (ghost — kept for IntersectionObserver) ══════════════════ */
 #footer{height:2px;opacity:0;overflow:hidden;padding:0;margin:0;}
 
-/* ══════════════════ CAVE & RIVER LIFE ══════════════════ */
-.cave-life{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+/* ══════════════════ SIDE CREATURES ══════════════════ */
+/* Bat pairs flanking Experience box */
+.sbat-pair{position:absolute;top:30%;pointer-events:none;z-index:3;display:flex;flex-direction:column;gap:26px;}
+.sbat-pair.left {left:3%;}
+.sbat-pair.right{right:3%;}
+.sbat-wrap{animation:sbatFloat 2.6s ease-in-out infinite;}
+.sbat-wrap:nth-child(2){animation-delay:-1.3s;}
+.sbat-wrap:nth-child(2) .sbat-sprite{animation-delay:-0.09s;}
+.sbat-sprite{
+  width:36px;height:18px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Crect x='0' y='5' width='3' height='5' fill='%233a1855'/%3E%3Crect x='3' y='4' width='6' height='6' fill='%233a1855'/%3E%3Crect x='9' y='5' width='5' height='7' fill='%233a1855'/%3E%3Crect x='14' y='3' width='8' height='12' fill='%233a1855'/%3E%3Crect x='22' y='5' width='5' height='7' fill='%233a1855'/%3E%3Crect x='27' y='4' width='6' height='6' fill='%233a1855'/%3E%3Crect x='33' y='5' width='3' height='5' fill='%233a1855'/%3E%3Crect x='1' y='9' width='12' height='4' fill='%233a1855'/%3E%3Crect x='23' y='9' width='12' height='4' fill='%233a1855'/%3E%3Crect x='15' y='0' width='2' height='4' fill='%233a1855'/%3E%3Crect x='19' y='0' width='2' height='4' fill='%233a1855'/%3E%3Crect x='14' y='6' width='3' height='3' fill='%23ff2040'/%3E%3Crect x='19' y='6' width='3' height='3' fill='%23ff2040'/%3E%3Crect x='14' y='6' width='1' height='1' fill='%23ff9090'/%3E%3Crect x='19' y='6' width='1' height='1' fill='%23ff9090'/%3E%3C/svg%3E") center/contain no-repeat;
+  image-rendering:pixelated;
+  filter:drop-shadow(0 0 6px rgba(200,80,255,.95));
+}
+.sbat-pair.left  .sbat-sprite{animation:sbatFlapL .18s steps(1) infinite;}
+.sbat-pair.right .sbat-sprite{animation:sbatFlapR .18s steps(1) infinite;}
+@keyframes sbatFloat{
+  0%,100%{transform:translateY(0);}
+  50%    {transform:translateY(-15px);}
+}
+@keyframes sbatFlapL{
+  0%  {transform:scaleX(1) scaleY(1);}
+  50% {transform:scaleX(1) scaleY(0.45);}
+}
+@keyframes sbatFlapR{
+  0%  {transform:scaleX(-1) scaleY(1);}
+  50% {transform:scaleX(-1) scaleY(0.45);}
+}
 
-/* ── BAT GROUP: 4 bats orbiting a drifting center ── */
+/* Fish pairs flanking Contact box */
+.sfish-pair{position:absolute;top:25%;pointer-events:none;z-index:3;display:flex;flex-direction:column;gap:30px;}
+.sfish-pair.left {left:3%;}
+.sfish-pair.right{right:3%;}
+.sfish-wrap{animation:sfishBob 3s ease-in-out infinite;}
+.sfish-wrap:nth-child(2){animation-delay:-1.5s;}
+.sfish-wrap:nth-child(2) .sfish-sprite{animation-delay:-0.19s;}
+.sfish-sprite{
+  width:42px;height:24px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='16'%3E%3Crect x='0' y='2' width='7' height='4' fill='%23e87820'/%3E%3Crect x='0' y='10' width='7' height='4' fill='%23e87820'/%3E%3Crect x='2' y='5' width='3' height='6' fill='%23c86010'/%3E%3Crect x='7' y='3' width='17' height='10' fill='%23f8a030'/%3E%3Crect x='9' y='4' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='14' y='4' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='11' y='7' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='16' y='7' width='4' height='3' fill='%23f8b840'/%3E%3Crect x='8' y='12' width='14' height='1' fill='%23ffe090'/%3E%3Crect x='11' y='1' width='8' height='3' fill='%23d06818'/%3E%3Crect x='13' y='0' width='4' height='2' fill='%23d06818'/%3E%3Crect x='10' y='9' width='4' height='4' fill='%23c86010'/%3E%3Crect x='20' y='5' width='4' height='4' fill='%23111111'/%3E%3Crect x='21' y='5' width='2' height='2' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='1' height='1' fill='%23aaddff'/%3E%3Crect x='24' y='8' width='3' height='2' fill='%23e87820'/%3E%3Crect x='25' y='9' width='2' height='2' fill='%23c86010'/%3E%3C/svg%3E") center/contain no-repeat;
+  image-rendering:pixelated;
+  filter:drop-shadow(0 0 6px rgba(80,200,255,.95));
+}
+.sfish-pair.left  .sfish-sprite{animation:sfishWagR .38s ease-in-out infinite;}
+.sfish-pair.right .sfish-sprite{animation:sfishWagL .38s ease-in-out infinite;}
+@keyframes sfishBob{
+  0%,100%{transform:translateY(0);}
+  50%    {transform:translateY(-13px);}
+}
+@keyframes sfishWagR{
+  0%,100%{transform:scaleX(1) scaleY(1);}
+  50%    {transform:scaleX(1) scaleY(0.75);}
+}
+@keyframes sfishWagL{
+  0%,100%{transform:scaleX(-1) scaleY(1);}
+  50%    {transform:scaleX(-1) scaleY(0.75);}
+}
+
+/* ── CAVE & RIVER LIFE (kept empty for background atmosphere) ── */
 .bat-group{
   position:absolute;top:13%;left:38%;
   pointer-events:none;
@@ -867,21 +921,6 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   <!-- ══════════════════════════ SCROLL SECTIONS ══════════════════════════ -->
   <div id="sections">
 
-    <!-- Cave bats & river fish -->
-    <div class="cave-life" aria-hidden="true">
-      <div class="bat-group">
-        <div class="bat-orb"><div class="bat-sprite"></div></div>
-        <div class="bat-orb"><div class="bat-sprite"></div></div>
-        <div class="bat-orb"><div class="bat-sprite"></div></div>
-        <div class="bat-orb"><div class="bat-sprite"></div></div>
-      </div>
-      <div class="fish-group">
-        <div class="fish-orb"><div class="fish-sprite"></div></div>
-        <div class="fish-orb"><div class="fish-sprite"></div></div>
-        <div class="fish-orb"><div class="fish-sprite"></div></div>
-        <div class="fish-orb"><div class="fish-sprite"></div></div>
-      </div>
-    </div>
 
     <!-- EXPERIENCE -->
     <div class="sec-wrap" id="sec-about" style="padding-top:60px;">
@@ -918,6 +957,14 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
     <!-- EXPERIENCE -->
     <div class="sec-wrap" id="sec-exp">
+      <div class="sbat-pair left" aria-hidden="true">
+        <div class="sbat-wrap"><div class="sbat-sprite"></div></div>
+        <div class="sbat-wrap"><div class="sbat-sprite"></div></div>
+      </div>
+      <div class="sbat-pair right" aria-hidden="true">
+        <div class="sbat-wrap"><div class="sbat-sprite"></div></div>
+        <div class="sbat-wrap"><div class="sbat-sprite"></div></div>
+      </div>
       <div class="s-win" id="win-exp" data-id="exp">
         <div class="xp-bar">
           <span class="ttl">💼 Experience</span>
@@ -1045,6 +1092,14 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
     <!-- CONTACT -->
     <div class="sec-wrap" id="sec-contact">
+      <div class="sfish-pair left" aria-hidden="true">
+        <div class="sfish-wrap"><div class="sfish-sprite"></div></div>
+        <div class="sfish-wrap"><div class="sfish-sprite"></div></div>
+      </div>
+      <div class="sfish-pair right" aria-hidden="true">
+        <div class="sfish-wrap"><div class="sfish-sprite"></div></div>
+        <div class="sfish-wrap"><div class="sfish-sprite"></div></div>
+      </div>
       <div class="s-win" id="win-contact" data-id="contact">
         <div class="xp-bar">
           <span class="ttl">📧 Contact</span>
