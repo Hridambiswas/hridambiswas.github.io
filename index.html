@@ -102,168 +102,39 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ══════════════════ HERO DESKTOP ══════════════════ */
 #hero{
   position:relative;width:100vw;height:100vh;overflow:hidden;
-  background:linear-gradient(to bottom,
-    #0f3d7a 0%,
-    #1a5aaa 7%,
-    #2878cc 16%,
-    #4096d8 26%,
-    #5aaee0 36%,
-    #74c0e8 45%,
-    #96d0f0 52%,
-    #b4dff5 58%,
-    #c8e8f8 62%
-  );
-}
-/* SVG terrain positioned at bottom */
-.terrain{
-  position:absolute;bottom:0;left:0;width:100%;height:55%;
-  pointer-events:none;
-}
-.terrain-full{
-  position:absolute;bottom:0;left:0;width:100%;height:100%;
-  pointer-events:none;z-index:1;
+  background:url('s4.png') center center / cover no-repeat;
+  image-rendering:pixelated;
 }
 
-/* ── CLOUDS ── */
-.clouds{position:absolute;top:0;left:0;right:0;height:62%;pointer-events:none;overflow:hidden;z-index:2;}
-.cloud{position:absolute;will-change:transform;}
+/* ── PIXEL CLOUDS (matching s4 pixel-art style) ── */
+.clouds{
+  position:absolute;top:0;left:0;right:0;height:65%;
+  pointer-events:none;overflow:hidden;z-index:2;
+  image-rendering:pixelated;
+}
+.cloud{position:absolute;image-rendering:pixelated;will-change:transform;}
 
-/* ── Cloud puff base ── */
-.cloud-base{
-  border-radius:50% 50% 50% 50%/55% 55% 45% 45%;
-  background:radial-gradient(ellipse at 44% 20%,
-    #ffffff 0%,#f4f4f4 22%,#e4e4e4 48%,#ccc 72%,#b0b0b0 100%
-  );
-  box-shadow:
-    inset 0 -14px 24px rgba(0,0,0,.15),
-    inset 0 8px 18px rgba(255,255,255,.95),
-    0 8px 20px rgba(0,0,0,.18);
+/* ── Pixel cloud animation keyframes ── */
+@keyframes pxDrift1{
+  0%  {transform:translateX(-260px);}
+  100%{transform:translateX(calc(100vw + 260px));}
 }
-/* Large cumulus — right side, Bliss-style */
-.cloud-main{
-  width:320px;height:118px;
-  top:5%;left:52%;
-  animation:cloudSway1 90s ease-in-out infinite;
+@keyframes pxDrift2{
+  0%  {transform:translateX(-320px);}
+  100%{transform:translateX(calc(100vw + 320px));}
 }
-.cloud-main::before{
-  content:'';position:absolute;
-  width:180px;height:168px;top:-80px;left:35px;
-  border-radius:50%;
-  background:radial-gradient(ellipse at 40% 26%,#fff 0%,#efefef 36%,#d8d8d8 70%,#bbb 100%);
-  box-shadow:inset 0 -10px 18px rgba(0,0,0,.13),inset 0 6px 12px rgba(255,255,255,.92);
+@keyframes pxDrift3{
+  0%  {transform:translateX(-180px);}
+  100%{transform:translateX(calc(100vw + 180px));}
 }
-.cloud-main::after{
-  content:'';position:absolute;
-  width:145px;height:130px;top:-55px;left:175px;
-  border-radius:50%;
-  background:radial-gradient(ellipse at 40% 26%,#fff 0%,#efefef 36%,#dadada 70%,#bbb 100%);
-  box-shadow:inset 0 -8px 14px rgba(0,0,0,.12),inset 0 5px 10px rgba(255,255,255,.9);
+@keyframes pxDrift4{
+  0%  {transform:translateX(-140px);}
+  100%{transform:translateX(calc(100vw + 140px));}
 }
-
-/* Medium cumulus — left */
-.cloud-med{
-  width:200px;height:75px;
-  top:12%;left:-220px;
-  border-radius:50px;
-  background:radial-gradient(ellipse at 44% 22%,#fff 0%,#f2f2f2 35%,#ddd 65%,#bbb 100%);
-  box-shadow:inset 0 -8px 16px rgba(0,0,0,.13),inset 0 5px 12px rgba(255,255,255,.92),0 5px 14px rgba(0,0,0,.15);
-  animation:cloudSway2 65s ease-in-out 6s infinite;
-}
-.cloud-med::before{
-  content:'';position:absolute;
-  width:100px;height:95px;top:-48px;left:25px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 50%,#ccc 100%);
-  box-shadow:inset 0 -6px 12px rgba(0,0,0,.12);
-}
-.cloud-med::after{
-  content:'';position:absolute;
-  width:78px;height:72px;top:-36px;left:105px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 50%,#ccc 100%);
-  box-shadow:inset 0 -5px 10px rgba(0,0,0,.11);
-}
-
-/* Small puff */
-.cloud-sm{
-  width:130px;height:52px;
-  top:22%;left:-150px;
-  border-radius:40px;
-  background:radial-gradient(ellipse at 44% 24%,#fff 0%,#f0f0f0 45%,#ccc 100%);
-  box-shadow:inset 0 -5px 10px rgba(0,0,0,.11),inset 0 4px 8px rgba(255,255,255,.9),0 3px 10px rgba(0,0,0,.13);
-  animation:cloudSway3 45s ease-in-out 14s infinite;opacity:.88;
-}
-.cloud-sm::before{
-  content:'';position:absolute;
-  width:62px;height:62px;top:-32px;left:16px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 52%,#ccc 100%);
-}
-.cloud-sm::after{
-  content:'';position:absolute;
-  width:50px;height:50px;top:-24px;left:65px;border-radius:50%;
-  background:radial-gradient(#fff 0%,#eee 52%,#ccc 100%);
-}
-
-/* ── Wispy cirrus streaks ── */
-.cloud-wisp{
-  height:14px;border-radius:50px;
-  filter:blur(4px);
-  background:linear-gradient(to right,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,.78) 18%,
-    rgba(255,255,255,.9) 50%,
-    rgba(255,255,255,.78) 82%,
-    rgba(255,255,255,0) 100%
-  );
-}
-.wisp-1{width:260px;height:10px;top:5%;left:8%;  animation:wispFloat1 70s ease-in-out infinite;opacity:.8;}
-.wisp-2{width:180px;height:8px; top:9%;left:30%; animation:wispFloat2 85s ease-in-out 12s infinite;opacity:.65;}
-.wisp-3{width:320px;height:12px;top:16%;left:-320px;animation:wispFloat3 58s ease-in-out 25s infinite;opacity:.72;}
-.wisp-4{width:140px;height:7px; top:3%;left:60%; animation:wispFloat1 95s ease-in-out 8s infinite;opacity:.55;}
-.wisp-5{width:210px;height:9px; top:28%;left:-210px;animation:wispFloat2 52s ease-in-out 3s infinite;opacity:.6;}
-.wisp-6{width:170px;height:8px; top:20%;left:20%; animation:wispFloat3 78s ease-in-out 18s infinite;opacity:.5;}
-
-/* ── Cloud animations — combined X+Y+scale ── */
-@keyframes cloudSway1{
-  0%   {transform:translateX(-420px) translateY(0px) scale(1);}
-  15%  {transform:translateX(15vw)  translateY(-14px) scale(1.02);}
-  35%  {transform:translateX(35vw)  translateY(8px)  scale(.98);}
-  55%  {transform:translateX(55vw)  translateY(-10px) scale(1.01);}
-  75%  {transform:translateX(75vw)  translateY(6px)  scale(.99);}
-  100% {transform:translateX(calc(100vw + 420px)) translateY(0px) scale(1);}
-}
-@keyframes cloudSway2{
-  0%   {transform:translateX(0px)  translateY(0px) scale(1);}
-  20%  {transform:translateX(22vw) translateY(12px) scale(1.03);}
-  40%  {transform:translateX(44vw) translateY(-6px) scale(.97);}
-  60%  {transform:translateX(65vw) translateY(10px) scale(1.02);}
-  80%  {transform:translateX(82vw) translateY(-4px) scale(.99);}
-  100% {transform:translateX(calc(100vw + 300px)) translateY(0px) scale(1);}
-}
-@keyframes cloudSway3{
-  0%   {transform:translateX(0px)  translateY(0px);}
-  30%  {transform:translateX(30vw) translateY(-18px) scale(1.04);}
-  60%  {transform:translateX(65vw) translateY(8px)  scale(.96);}
-  100% {transform:translateX(calc(100vw + 250px)) translateY(0px) scale(1);}
-}
-@keyframes wispFloat1{
-  0%   {transform:translateX(0)     translateY(0)    rotate(-1.5deg);opacity:0;}
-  5%   {opacity:.8;}
-  40%  {transform:translateX(42vw)  translateY(-10px) rotate(.8deg);}
-  90%  {opacity:.8;}
-  100% {transform:translateX(calc(100vw + 320px)) translateY(4px) rotate(-1deg);opacity:0;}
-}
-@keyframes wispFloat2{
-  0%   {transform:translateX(0)     translateY(0)    rotate(.8deg);opacity:0;}
-  8%   {opacity:.65;}
-  50%  {transform:translateX(50vw)  translateY(12px) rotate(-1.2deg);}
-  92%  {opacity:.65;}
-  100% {transform:translateX(calc(100vw + 260px)) translateY(-3px) rotate(1deg);opacity:0;}
-}
-@keyframes wispFloat3{
-  0%   {transform:translateX(0)     translateY(0)    rotate(-0.5deg) scaleX(1);opacity:0;}
-  6%   {opacity:.7;}
-  45%  {transform:translateX(45vw)  translateY(-8px) rotate(1.5deg) scaleX(1.08);}
-  94%  {opacity:.7;}
-  100% {transform:translateX(calc(100vw + 380px)) translateY(2px) rotate(-.5deg) scaleX(1);opacity:0;}
+/* wispy horizontal streaks drift */
+@keyframes pxWisp{
+  0%  {transform:translateX(-380px);}
+  100%{transform:translateX(calc(100vw + 380px));}
 }
 
 /* ── XP LOGO ── */
@@ -614,137 +485,94 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
   <!-- ── HERO DESKTOP ── -->
   <div id="hero">
+    <!-- Pixel-art clouds matching s4 style -->
     <div class="clouds">
-      <div class="cloud cloud-main cloud-base"></div>
-      <div class="cloud cloud-med"></div>
-      <div class="cloud cloud-sm"></div>
-      <div class="cloud cloud-wisp wisp-1"></div>
-      <div class="cloud cloud-wisp wisp-2"></div>
-      <div class="cloud cloud-wisp wisp-3"></div>
-      <div class="cloud cloud-wisp wisp-4"></div>
-      <div class="cloud cloud-wisp wisp-5"></div>
-      <div class="cloud cloud-wisp wisp-6"></div>
+      <!-- Large pixel cumulus (right-side, like s4) — static anchor, no drift -->
+      <svg style="position:absolute;top:4%;right:6%;image-rendering:pixelated;" width="256" height="160" viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="16" y="32" width="40" height="8" fill="#fff"/>
+        <rect x="8"  y="24" width="48" height="8" fill="#fff"/>
+        <rect x="12" y="16" width="44" height="8" fill="#fff"/>
+        <rect x="20" y="8"  width="28" height="8" fill="#fff"/>
+        <rect x="28" y="0"  width="20" height="8" fill="#fff"/>
+        <rect x="36" y="0"  width="12" height="8" fill="#fff"/>
+        <!-- shadow bottom -->
+        <rect x="16" y="36" width="40" height="4" fill="#c8d8e8"/>
+        <rect x="8"  y="28" width="48" height="4" fill="#d0dde8"/>
+        <!-- left puff -->
+        <rect x="4"  y="24" width="12" height="8" fill="#fff"/>
+        <rect x="8"  y="16" width="8"  height="8" fill="#fff"/>
+        <rect x="4"  y="28" width="12" height="4" fill="#c8d8e8"/>
+        <!-- right puff -->
+        <rect x="52" y="20" width="12" height="12" fill="#fff"/>
+        <rect x="56" y="12" width="8"  height="8"  fill="#fff"/>
+        <rect x="52" y="28" width="12" height="4" fill="#c8d8e8"/>
+      </svg>
+
+      <!-- Medium pixel cloud drifting — matches middle clouds in s4 -->
+      <svg class="cloud" style="top:8%;left:-220px;animation:pxDrift1 55s linear 4s infinite;" width="176" height="96" viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="4"  y="16" width="36" height="8" fill="#fff"/>
+        <rect x="8"  y="8"  width="28" height="8" fill="#fff"/>
+        <rect x="16" y="0"  width="16" height="8" fill="#fff"/>
+        <rect x="4"  y="20" width="36" height="4" fill="#c8d8e8"/>
+        <rect x="8"  y="12" width="28" height="4" fill="#d4dde8"/>
+        <!-- small left bump -->
+        <rect x="0"  y="12" width="8"  height="8"  fill="#fff"/>
+        <rect x="0"  y="16" width="8"  height="4"  fill="#c8d8e8"/>
+      </svg>
+
+      <!-- Small pixel cloud — upper left area like s4 -->
+      <svg class="cloud" style="top:5%;left:-140px;animation:pxDrift2 70s linear 18s infinite;" width="120" height="72" viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="2"  y="10" width="26" height="8" fill="#fff"/>
+        <rect x="6"  y="4"  width="18" height="6" fill="#fff"/>
+        <rect x="10" y="0"  width="10" height="4" fill="#fff"/>
+        <rect x="2"  y="14" width="26" height="4" fill="#c8d8e8"/>
+      </svg>
+
+      <!-- Thin wispy pixel cloud — horizontal streaks like s4 upper-left area -->
+      <svg class="cloud" style="top:14%;left:-300px;animation:pxWisp 45s linear 0s infinite;" width="300" height="32" viewBox="0 0 75 8" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="0"  y="4" width="20" height="4" fill="#fff" opacity=".9"/>
+        <rect x="22" y="4" width="14" height="4" fill="#fff" opacity=".85"/>
+        <rect x="38" y="2" width="18" height="6" fill="#fff" opacity=".9"/>
+        <rect x="58" y="4" width="12" height="4" fill="#fff" opacity=".8"/>
+        <rect x="2"  y="6" width="18" height="2" fill="#d0dde8" opacity=".7"/>
+        <rect x="38" y="6" width="16" height="2" fill="#d0dde8" opacity=".7"/>
+      </svg>
+
+      <!-- Another wispy streak higher up -->
+      <svg class="cloud" style="top:7%;left:-240px;animation:pxWisp 60s linear 12s infinite;" width="240" height="24" viewBox="0 0 60 6" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="0"  y="2" width="16" height="4" fill="#fff" opacity=".85"/>
+        <rect x="18" y="2" width="10" height="4" fill="#fff" opacity=".8"/>
+        <rect x="30" y="0" width="14" height="6" fill="#fff" opacity=".9"/>
+        <rect x="46" y="2" width="10" height="4" fill="#fff" opacity=".75"/>
+        <rect x="0"  y="4" width="14" height="2" fill="#d0dde8" opacity=".6"/>
+        <rect x="30" y="4" width="12" height="2" fill="#d0dde8" opacity=".6"/>
+      </svg>
+
+      <!-- Small scattered pixel cloud — top center like s4 -->
+      <svg class="cloud" style="top:3%;left:-110px;animation:pxDrift3 80s linear 30s infinite;" width="110" height="56" viewBox="0 0 28 14" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="4"  y="6"  width="20" height="8" fill="#fff"/>
+        <rect x="8"  y="2"  width="12" height="4" fill="#fff"/>
+        <rect x="0"  y="8"  width="6"  height="6" fill="#fff"/>
+        <rect x="22" y="6"  width="6"  height="8" fill="#fff"/>
+        <rect x="4"  y="10" width="20" height="4" fill="#c8d8e8"/>
+        <rect x="0"  y="10" width="6"  height="4" fill="#c8d8e8"/>
+      </svg>
+
+      <!-- Slow large pixel cloud drifting from left -->
+      <svg class="cloud" style="top:18%;left:-280px;animation:pxDrift4 100s linear 8s infinite;" width="200" height="104" viewBox="0 0 50 26" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+        <rect x="6"  y="18" width="38" height="8" fill="#fff"/>
+        <rect x="2"  y="10" width="42" height="8" fill="#fff"/>
+        <rect x="8"  y="4"  width="30" height="6" fill="#fff"/>
+        <rect x="14" y="0"  width="18" height="4" fill="#fff"/>
+        <rect x="6"  y="22" width="38" height="4" fill="#c8d8e8"/>
+        <rect x="2"  y="14" width="42" height="4" fill="#d0dde8"/>
+        <!-- side bumps -->
+        <rect x="0"  y="14" width="4"  height="8" fill="#fff"/>
+        <rect x="44" y="12" width="6"  height="10" fill="#fff"/>
+        <rect x="0"  y="18" width="4"  height="4" fill="#c8d8e8"/>
+        <rect x="44" y="18" width="6"  height="4" fill="#c8d8e8"/>
+      </svg>
     </div>
-
-    <!-- SVG Terrain — rich textured Bliss landscape -->
-    <svg class="terrain-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <!-- Sky haze at horizon -->
-        <linearGradient id="hazeGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#c8e8f8" stop-opacity="0"/>
-          <stop offset="1" stop-color="#d8eefc" stop-opacity=".55"/>
-        </linearGradient>
-        <!-- Distant mountain gradient -->
-        <linearGradient id="mtFarGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7ab0d0"/>
-          <stop offset="0.5" stop-color="#5a9abf"/>
-          <stop offset="1" stop-color="#4a8aaf"/>
-        </linearGradient>
-        <!-- Main hill gradient -->
-        <linearGradient id="hillGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#70d048"/>
-          <stop offset="0.18" stop-color="#5ec040"/>
-          <stop offset="0.4" stop-color="#48a832"/>
-          <stop offset="0.65" stop-color="#368820"/>
-          <stop offset="0.85" stop-color="#246812"/>
-          <stop offset="1"   stop-color="#164808"/>
-        </linearGradient>
-        <!-- Grass highlight streaks -->
-        <linearGradient id="grassHi" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#90e060" stop-opacity=".55"/>
-          <stop offset="1" stop-color="#60c040" stop-opacity="0"/>
-        </linearGradient>
-        <!-- Shadow valley gradient -->
-        <linearGradient id="valleyShad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#1a4a08" stop-opacity=".35"/>
-          <stop offset="1" stop-color="#0a2804" stop-opacity=".6"/>
-        </linearGradient>
-        <!-- Foreground grass -->
-        <linearGradient id="fgGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"  stop-color="#82d856"/>
-          <stop offset="0.3" stop-color="#5cb838"/>
-          <stop offset="0.7" stop-color="#3a8820"/>
-          <stop offset="1"  stop-color="#1e5810"/>
-        </linearGradient>
-        <!-- Distant right hill gradient -->
-        <linearGradient id="hillRGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"  stop-color="#58b030"/>
-          <stop offset="0.5" stop-color="#3e8820"/>
-          <stop offset="1"  stop-color="#286010"/>
-        </linearGradient>
-      </defs>
-
-      <!-- Horizon haze overlay -->
-      <rect x="0" y="440" width="1440" height="100" fill="url(#hazeGrad)"/>
-
-      <!-- Distant hazy mountains (atmospheric perspective = blue-grey) -->
-      <path d="M0,560 Q120,490 240,510 Q320,480 400,500 Q500,465 580,490 Q680,455 760,475
-               Q860,445 950,468 Q1060,438 1150,462 Q1260,440 1350,458 Q1400,452 1440,460
-               L1440,640 L0,640 Z"
-        fill="url(#mtFarGrad)" opacity=".45"/>
-
-      <!-- Distant mountain snow caps hint -->
-      <path d="M580,490 Q590,480 600,490 Z M760,475 Q772,463 784,475 Z M950,468 Q963,455 976,468 Z"
-        fill="rgba(255,255,255,.3)" stroke="none"/>
-
-      <!-- Main rolling green hill — the Bliss signature shape -->
-      <path d="M-10,900 L-10,640
-               Q80,610 160,600 Q240,590 320,582 Q400,572 480,558
-               Q560,542 640,525 Q720,510 800,502
-               Q860,496 920,499 Q980,502 1040,510
-               Q1120,520 1200,538 Q1280,556 1360,575
-               Q1400,584 1440,592 L1440,900 Z"
-        fill="url(#hillGrad)"/>
-
-      <!-- Grass highlight band (sunlit top of hill) -->
-      <path d="M-10,650 Q160,618 320,600 Q480,580 640,542 Q800,516 920,512
-               Q1080,515 1220,545 Q1360,572 1440,600 L1440,640
-               Q1360,612 1220,584 Q1080,554 920,550
-               Q800,548 640,576 Q480,610 320,630 Q160,648 -10,670 Z"
-        fill="url(#grassHi)"/>
-
-      <!-- Grass texture — subtle diagonal light streaks -->
-      <g opacity=".18" stroke="#a0e060" stroke-width="1.5" fill="none">
-        <path d="M80,660 Q100,640 120,660"/>
-        <path d="M200,640 Q225,618 250,640"/>
-        <path d="M380,610 Q408,588 436,610"/>
-        <path d="M560,575 Q592,551 624,575"/>
-        <path d="M720,540 Q754,515 788,540"/>
-        <path d="M900,522 Q935,496 970,522"/>
-        <path d="M1100,540 Q1136,514 1172,540"/>
-        <path d="M1280,568 Q1318,542 1356,568"/>
-        <path d="M140,700 Q168,678 196,700"/>
-        <path d="M460,652 Q492,628 524,652"/>
-        <path d="M820,598 Q856,572 892,598"/>
-        <path d="M1200,612 Q1238,585 1276,612"/>
-      </g>
-
-      <!-- Valley shadow (right side descent) -->
-      <path d="M920,499 Q980,502 1040,510 Q1120,520 1200,538
-               Q1200,560 1120,548 Q1040,536 980,530 Q940,524 920,520 Z"
-        fill="url(#valleyShad)"/>
-
-      <!-- Right-side secondary hill (adds depth) -->
-      <path d="M1100,900 L1100,560 Q1180,545 1260,555 Q1340,562 1440,575
-               L1440,900 Z"
-        fill="url(#hillRGrad)" opacity=".6"/>
-
-      <!-- Foreground grass strip (bottom) -->
-      <path d="M-10,820 Q180,790 360,800 Q540,808 720,798
-               Q900,788 1080,800 Q1260,810 1440,800 L1440,900 L-10,900 Z"
-        fill="url(#fgGrad)"/>
-
-      <!-- Foreground grass texture -->
-      <g opacity=".22" stroke="#90e050" stroke-width="2" fill="none">
-        <path d="M60,840 Q72,824 84,840"/>
-        <path d="M200,830 Q216,812 232,830"/>
-        <path d="M380,838 Q398,818 416,838"/>
-        <path d="M600,826 Q620,806 640,826"/>
-        <path d="M820,832 Q842,810 864,832"/>
-        <path d="M1040,828 Q1064,806 1088,828"/>
-        <path d="M1260,836 Q1286,812 1312,836"/>
-      </g>
-    </svg>
 
     <!-- XP Logo -->
     <div class="xp-logo">
@@ -891,7 +719,11 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
               </div>
             </div>
           </div>
-          <p class="desc">Figuring out how to make machines a little smarter every day. From crunching 100M+ rows at Microsoft to AI research at ISTA Austria — hopping between labs, hackathons, and internships like it's a side quest chain 🎮</p>
+          <p class="desc">Hey! Welcome to my digital workspace 👋<br><br>
+            Status: <b>Coffee ✓ &nbsp;Code ✓ &nbsp;Wi-Fi ✓</b><br>
+            Currently surviving final year @ KIIT while stacking internships and shipping projects.<br><br>
+            Scroll down to peek inside my folders 📁
+          </p>
           <div class="cta">▼ scroll down to explore ▼</div>
         </div>
       </div>
