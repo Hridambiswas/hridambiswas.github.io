@@ -494,52 +494,71 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ══════════════════ CAVE & RIVER LIFE ══════════════════ */
 .cave-life{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
 
-/* ── Bats ── */
-.bat-wrap{position:absolute;width:20px;height:10px;}
-.bat-body{
-  width:20px;height:10px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='10'%3E%3Crect x='7' y='0' width='2' height='2' fill='%234a2060'/%3E%3Crect x='11' y='0' width='2' height='2' fill='%234a2060'/%3E%3Crect x='7' y='2' width='6' height='7' fill='%234a2060'/%3E%3Crect x='0' y='3' width='7' height='3' fill='%234a2060'/%3E%3Crect x='13' y='3' width='7' height='3' fill='%234a2060'/%3E%3Crect x='1' y='5' width='6' height='2' fill='%234a2060'/%3E%3Crect x='13' y='5' width='6' height='2' fill='%234a2060'/%3E%3Crect x='8' y='4' width='2' height='2' fill='%23dd1020'/%3E%3Crect x='11' y='4' width='2' height='2' fill='%23dd1020'/%3E%3C/svg%3E") center/contain no-repeat;
+/* ── BAT GROUP: 4 bats orbiting a drifting center ── */
+.bat-group{
+  position:absolute;top:13%;left:38%;
+  pointer-events:none;
+  animation:batGroupDrift 30s ease-in-out infinite;
+}
+@keyframes batGroupDrift{
+  0%  {transform:translate(0,0);}
+  25% {transform:translate(90px,-18px);}
+  50% {transform:translate(15px,22px);}
+  75% {transform:translate(-65px,-12px);}
+  100%{transform:translate(0,0);}
+}
+.bat-orb{
+  position:absolute;top:0;left:0;
+  width:36px;height:18px;
+  margin:-9px 0 0 -18px;
+  animation:batEllipse 6s linear infinite;
+}
+.bat-orb:nth-child(2){animation-delay:-1.5s;}
+.bat-orb:nth-child(3){animation-delay:-3s;}
+.bat-orb:nth-child(4){animation-delay:-4.5s;}
+@keyframes batEllipse{
+  0%    {transform:translate(130px,0) scaleX(1);}
+  12%   {transform:translate(92px,21px) scaleX(1);}
+  25%   {transform:translate(0,30px) scaleX(1);}
+  37%   {transform:translate(-92px,21px) scaleX(1);}
+  49.9% {transform:translate(-129px,0) scaleX(1);}
+  50%   {transform:translate(-130px,0) scaleX(-1);}
+  62%   {transform:translate(-92px,-21px) scaleX(-1);}
+  75%   {transform:translate(0,-30px) scaleX(-1);}
+  87%   {transform:translate(92px,-21px) scaleX(-1);}
+  99.9% {transform:translate(129px,0) scaleX(-1);}
+  100%  {transform:translate(130px,0) scaleX(1);}
+}
+.bat-sprite{
+  width:36px;height:18px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Crect x='0' y='5' width='3' height='5' fill='%233a1855'/%3E%3Crect x='3' y='4' width='6' height='6' fill='%233a1855'/%3E%3Crect x='9' y='5' width='5' height='7' fill='%233a1855'/%3E%3Crect x='14' y='3' width='8' height='12' fill='%233a1855'/%3E%3Crect x='22' y='5' width='5' height='7' fill='%233a1855'/%3E%3Crect x='27' y='4' width='6' height='6' fill='%233a1855'/%3E%3Crect x='33' y='5' width='3' height='5' fill='%233a1855'/%3E%3Crect x='1' y='9' width='12' height='4' fill='%233a1855'/%3E%3Crect x='23' y='9' width='12' height='4' fill='%233a1855'/%3E%3Crect x='15' y='0' width='2' height='4' fill='%233a1855'/%3E%3Crect x='19' y='0' width='2' height='4' fill='%233a1855'/%3E%3Crect x='14' y='6' width='3' height='3' fill='%23ff2040'/%3E%3Crect x='19' y='6' width='3' height='3' fill='%23ff2040'/%3E%3Crect x='14' y='6' width='1' height='1' fill='%23ff9090'/%3E%3Crect x='19' y='6' width='1' height='1' fill='%23ff9090'/%3E%3C/svg%3E") center/contain no-repeat;
   image-rendering:pixelated;
-  animation:batFlap .22s steps(1) infinite;
+  filter:drop-shadow(0 0 5px rgba(200,80,255,.95));
+  animation:batFlap .18s steps(1) infinite;
 }
 @keyframes batFlap{
   0%  {transform:scaleY(1);}
-  50% {transform:scaleY(0.58);}
-}
-.bat-wrap.b1{top:8%;left:25%;animation:batOrbit 5.5s linear infinite;}
-.bat-wrap.b2{top:13%;left:58%;animation:batOrbit 7.2s linear infinite;animation-delay:-2.8s;}
-.bat-wrap.b3{top:5%;left:74%;animation:batOrbit 4.2s linear infinite;animation-delay:-1.5s;}
-@keyframes batOrbit{
-  0%  {transform:translate(0,0) scaleX(1);}
-  12% {transform:translate(55px,-16px) scaleX(1);}
-  25% {transform:translate(90px,0) scaleX(1);}
-  37% {transform:translate(55px,16px) scaleX(-1);}
-  50% {transform:translate(0,0) scaleX(-1);}
-  62% {transform:translate(-55px,-16px) scaleX(-1);}
-  75% {transform:translate(-90px,0) scaleX(-1);}
-  87% {transform:translate(-55px,16px) scaleX(1);}
-  100%{transform:translate(0,0) scaleX(1);}
+  50% {transform:scaleY(0.45);}
 }
 
-/* ── Fish ── */
-.fish-wrap{position:absolute;width:16px;height:10px;}
-.fish-body{
-  width:16px;height:10px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Crect x='4' y='2' width='10' height='6' fill='%23f89820'/%3E%3Crect x='0' y='1' width='5' height='3' fill='%23f89820'/%3E%3Crect x='0' y='6' width='5' height='3' fill='%23f89820'/%3E%3Crect x='5' y='6' width='8' height='2' fill='%23ffd060'/%3E%3Crect x='6' y='1' width='4' height='1' fill='%23e07800'/%3E%3Crect x='12' y='3' width='2' height='2' fill='%23111111'/%3E%3Crect x='13' y='3' width='1' height='1' fill='%23ffffff'/%3E%3C/svg%3E") center/contain no-repeat;
+/* ── FISH: 4 fish jumping from river ── */
+.fish-j{
+  position:absolute;
+  width:28px;height:16px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='16'%3E%3Crect x='0' y='2' width='7' height='4' fill='%23e87820'/%3E%3Crect x='0' y='10' width='7' height='4' fill='%23e87820'/%3E%3Crect x='2' y='5' width='3' height='6' fill='%23c86010'/%3E%3Crect x='7' y='3' width='17' height='10' fill='%23f8a030'/%3E%3Crect x='9' y='4' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='14' y='4' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='11' y='7' width='4' height='4' fill='%23f8b840'/%3E%3Crect x='16' y='7' width='4' height='3' fill='%23f8b840'/%3E%3Crect x='8' y='12' width='14' height='1' fill='%23ffe090'/%3E%3Crect x='11' y='1' width='8' height='3' fill='%23d06818'/%3E%3Crect x='13' y='0' width='4' height='2' fill='%23d06818'/%3E%3Crect x='10' y='9' width='4' height='4' fill='%23c86010'/%3E%3Crect x='20' y='5' width='4' height='4' fill='%23111111'/%3E%3Crect x='21' y='5' width='2' height='2' fill='%23ffffff'/%3E%3Crect x='21' y='6' width='1' height='1' fill='%23aaddff'/%3E%3Crect x='24' y='8' width='3' height='2' fill='%23e87820'/%3E%3Crect x='25' y='9' width='2' height='2' fill='%23c86010'/%3E%3C/svg%3E") center/contain no-repeat;
   image-rendering:pixelated;
+  filter:drop-shadow(0 0 6px rgba(255,165,30,1));
+  animation:fishJump 8s ease-in-out infinite;
 }
-.fish-wrap.f1{bottom:14%;left:20%;animation:fishJump 4.5s ease-in-out infinite;}
-.fish-wrap.f2{bottom:11%;left:49%;animation:fishJump 6s ease-in-out infinite;animation-delay:-2.2s;}
-.fish-wrap.f3{bottom:16%;left:73%;animation:fishJump 3.8s ease-in-out infinite;animation-delay:-1.1s;}
 @keyframes fishJump{
-  0%,100%{transform:translateY(0) rotate(0deg);opacity:0;}
-  5%     {transform:translateY(-8px) rotate(-28deg);opacity:1;}
-  28%    {transform:translateY(-85px) rotate(-65deg);}
-  48%    {transform:translateY(-100px) rotate(-95deg);}
-  68%    {transform:translateY(-60px) rotate(-138deg);}
-  82%    {transform:translateY(-10px) rotate(-162deg);opacity:1;}
-  90%    {transform:translateY(0) rotate(-175deg);opacity:0.2;}
-  93%    {transform:translateY(0) rotate(-180deg);opacity:0;}
+  0%,62%,100%{transform:translateY(0) rotate(0deg);opacity:0;}
+  3%         {transform:translateY(-22px) rotate(-32deg);opacity:1;}
+  20%        {transform:translateY(-145px) rotate(-72deg);}
+  30%        {transform:translateY(-165px) rotate(-90deg);}
+  42%        {transform:translateY(-125px) rotate(-118deg);}
+  52%        {transform:translateY(-28px) rotate(-158deg);opacity:1;}
+  58%        {transform:translateY(0) rotate(-175deg);opacity:0.3;}
+  60%        {transform:translateY(0) rotate(-180deg);opacity:0;}
 }
 
 /* ── Taskbar copyright ── */
@@ -824,12 +843,16 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
     <!-- Cave bats & river fish -->
     <div class="cave-life" aria-hidden="true">
-      <div class="bat-wrap b1"><div class="bat-body"></div></div>
-      <div class="bat-wrap b2"><div class="bat-body"></div></div>
-      <div class="bat-wrap b3"><div class="bat-body"></div></div>
-      <div class="fish-wrap f1"><div class="fish-body"></div></div>
-      <div class="fish-wrap f2"><div class="fish-body"></div></div>
-      <div class="fish-wrap f3"><div class="fish-body"></div></div>
+      <div class="bat-group">
+        <div class="bat-orb"><div class="bat-sprite"></div></div>
+        <div class="bat-orb"><div class="bat-sprite"></div></div>
+        <div class="bat-orb"><div class="bat-sprite"></div></div>
+        <div class="bat-orb"><div class="bat-sprite"></div></div>
+      </div>
+      <div class="fish-j" style="bottom:12%;left:16%;"></div>
+      <div class="fish-j" style="bottom:10%;left:44%;animation-delay:-3s;animation-duration:9.5s;"></div>
+      <div class="fish-j" style="bottom:13%;left:69%;animation-delay:-5.5s;animation-duration:7s;"></div>
+      <div class="fish-j" style="bottom:11%;left:58%;animation-delay:-1.5s;animation-duration:8.5s;"></div>
     </div>
 
     <!-- EXPERIENCE -->
