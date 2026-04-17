@@ -101,17 +101,8 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 /* ══════════════════ HERO DESKTOP ══════════════════ */
 #hero{
   position:relative;width:100vw;height:100vh;overflow:hidden;
-  background:url('s4.png') center center / cover no-repeat;
+  background:url('s8.png') center center / cover no-repeat;
   image-rendering:pixelated;
-}
-/* Pixel tree covers Google Lens watermark */
-.hero-tree{
-  position:absolute;bottom:0;left:2px;
-  width:150px;height:180px;
-  z-index:6;pointer-events:none;
-  image-rendering:pixelated;
-  object-fit:contain;
-  object-position:bottom left;
 }
 
 /* ── PIXEL CLOUDS (matching s4 pixel-art style) ── */
@@ -784,8 +775,6 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
     </div>
 
 
-    <!-- Pixel tree covers Google Lens watermark -->
-    <img src="s7.png" class="hero-tree" alt="">
 
   </div><!-- /hero -->
 
@@ -1178,29 +1167,6 @@ const secObs = new IntersectionObserver(entries => {
 setTimeout(()=>{
   document.querySelectorAll('.sec-wrap').forEach(el => secObs.observe(el));
 },100);
-
-// ── TREE: strip white background via canvas ────────────
-(function(){
-  const treeImg = document.querySelector('.hero-tree');
-  if(!treeImg) return;
-  const src = treeImg.src;
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  img.onload = function(){
-    const c = document.createElement('canvas');
-    c.width = img.naturalWidth; c.height = img.naturalHeight;
-    const ctx = c.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-    const d = ctx.getImageData(0, 0, c.width, c.height);
-    for(let i = 0; i < d.data.length; i += 4){
-      const r = d.data[i], g = d.data[i+1], b = d.data[i+2];
-      if(r > 220 && g > 220 && b > 220) d.data[i+3] = 0;
-    }
-    ctx.putImageData(d, 0, 0);
-    treeImg.src = c.toDataURL('image/png');
-  };
-  img.src = src;
-})();
 
 // ── PIXEL HELPER ──────────────────────────────────────
 const TIPS = [
