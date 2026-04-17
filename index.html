@@ -104,11 +104,15 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   background:url('s4.png') center center / cover no-repeat;
   image-rendering:pixelated;
 }
-/* Cover Google Lens watermark in bottom-left of s4.png */
+/* Cover Google Lens watermark bottom-left of s4.png */
 #hero::before{
   content:'';position:absolute;bottom:0;left:0;
-  width:80px;height:80px;z-index:5;pointer-events:none;
-  background:radial-gradient(ellipse at 0% 100%, #1a5008 0%, #1e5c0a 40%, #226010 65%, transparent 100%);
+  width:130px;height:130px;z-index:5;pointer-events:none;
+  background:radial-gradient(ellipse at 0% 100%,
+    #1a4a06 0%,#1a4a06 42%,
+    #1e5408 55%,#226010 68%,
+    transparent 82%
+  );
 }
 
 /* ── PIXEL CLOUDS (matching s4 pixel-art style) ── */
@@ -168,17 +172,19 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
   display:flex;flex-direction:column;align-items:center;
   border-radius:3px;transition:all .2s ease;
   transform-style:preserve-3d;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.7));
 }
 .icon:hover{
-  background:rgba(49,106,197,.4);
-  outline:1px dotted rgba(255,255,255,.8);
-  transform:perspective(400px) rotateX(-12deg) translateY(-4px) scale(1.08);
+  background:rgba(49,106,197,.45);
+  outline:1px dotted rgba(255,255,255,.9);
+  transform:perspective(400px) rotateX(-10deg) translateY(-4px) scale(1.08);
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.8));
 }
 .icon.sel{background:rgba(49,106,197,.65);outline:1px dotted #fff;}
-.icon .ic{width:40px;height:36px;margin-bottom:4px;display:flex;align-items:center;justify-content:center;}
+.icon .ic{width:42px;height:38px;margin-bottom:4px;display:flex;align-items:center;justify-content:center;}
 .icon .lb{
   font-size:11px;color:#fff;text-align:center;line-height:1.3;
-  text-shadow:1px 1px 3px #000,-1px -1px 3px #000;
+  text-shadow:1px 1px 0 #000,2px 2px 4px rgba(0,0,0,.9),-1px -1px 0 #000;
 }
 
 /* ── CENTRE HERO CONTENT ── */
@@ -291,33 +297,85 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
 /* ══════════════════ SCROLL SECTIONS ══════════════════ */
 #sections{
-  background:linear-gradient(to bottom,
-    #1a78d8 0%,#3da4e8 8%,#64b8f0 18%,
-    #62bb62 25%,#2d8c2d 35%,
-    #1a5a1a 45%,#0e3a0e 100%
-  );
   padding:60px 0 100px;
+  position:relative;
+  /* Pixel underground depth: grass → soil → clay → rock → cave → water */
+  background:
+    repeating-linear-gradient(0deg,  rgba(0,0,0,.04) 0px,rgba(0,0,0,.04) 1px,transparent 1px,transparent 8px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.04) 0px,rgba(0,0,0,.04) 1px,transparent 1px,transparent 8px),
+    repeating-linear-gradient(180deg,transparent 0px,transparent 23px,rgba(255,255,255,.045) 23px,rgba(255,255,255,.045) 25px),
+    linear-gradient(to bottom,
+      #2a5c10 0%,
+      #3a2c10 4%,  /* topsoil */
+      #4e3818 8%,
+      #5c4420 12%, /* subsoil */
+      #6a5028 16%,
+      #5c4424 19%, /* clay layer */
+      #786858 23%,
+      #6a6050 27%, /* pale rock begins */
+      #5e5448 31%,
+      #524c48 35%, /* grey rock */
+      #484040 39%,
+      #3e3838 43%,
+      #343030 47%, /* dark rock */
+      #282424 51%,
+      #1c1818 55%, /* cave */
+      #101010 59%,
+      #0c1020 63%, /* water transition */
+      #0a1630 67%,
+      #0c1e42 71%, /* underground water */
+      #0e2450 75%,
+      #102858 79%,
+      #0e2452 83%,
+      #0c1e4a 87%,
+      #0a1840 91%,
+      #081434 95%,
+      #060e2a 100%
+    );
 }
+/* Rock strata highlight bands */
+#sections::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    repeating-linear-gradient(180deg,
+      transparent 0px,transparent 71px,
+      rgba(180,140,100,.1) 71px,rgba(180,140,100,.1) 73px,
+      transparent 73px,transparent 144px
+    );
+}
+/* Underground water shimmer at bottom */
+#sections::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:36%;
+  pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(180deg,
+    rgba(30,90,220,.07) 0px,rgba(30,90,220,.07) 3px,
+    rgba(10,40,140,.09) 3px,rgba(10,40,140,.09) 6px
+  );
+  animation:waterShimmer 5s ease-in-out infinite;
+}
+@keyframes waterShimmer{
+  0%,100%{opacity:.5;transform:translateY(0);}
+  50%     {opacity:1; transform:translateY(-3px);}
+}
+
 .s-win{
   width:88%;max-width:920px;margin:0 auto 70px;
   border-radius:8px 8px 4px 4px;
-  box-shadow:6px 6px 40px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);
+  box-shadow:6px 6px 40px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08);
   opacity:0;
-  transform:perspective(1200px) rotateX(16deg) translateY(80px) scale(.96);
-  transition:opacity .7s ease, transform .7s cubic-bezier(.175,.885,.32,1.275);
+  transform:perspective(1200px) rotateX(10deg) translateY(55px) scale(.97);
+  transition:opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1);
   will-change:transform,opacity;
+  position:relative;z-index:2;
 }
 .s-win.show{
   opacity:1;
   transform:perspective(1200px) rotateX(0deg) translateY(0) scale(1);
 }
-.s-win:hover{
-  transform:perspective(1200px) rotateX(-1deg) scale(1.005) translateY(-3px);
-  box-shadow:8px 12px 50px rgba(0,0,0,.65);
-  transition:transform .3s ease,box-shadow .3s ease,opacity .7s ease;
-}
 .s-win.show:hover{
-  transform:perspective(1200px) rotateX(-1deg) scale(1.005) translateY(-3px);
+  transform:perspective(1200px) rotateX(-1deg) scale(1.003) translateY(-2px);
+  box-shadow:8px 14px 50px rgba(0,0,0,.7);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 .s-body{
   background:#ece9d8;border:2px solid #848484;border-top:none;
@@ -461,7 +519,7 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 }
 
 /* ══════════════════ SECTION DIVIDERS ══════════════════ */
-.sec-wrap{position:relative;}
+.sec-wrap{position:relative;z-index:1;}
 </style>
 </head>
 <body>
@@ -581,7 +639,6 @@ a,button,.icon,.wbtn,.sm-item,.contact-card,.tbar-item{
 
     <!-- XP Logo -->
     <div class="xp-logo">
-      <div class="ms">Microsoft</div>
       <div class="wn"><div class="flag"><div></div><div></div><div></div><div></div></div><b>Windows</b></div>
       <div class="xptxt">XP</div>
     </div>
